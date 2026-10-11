@@ -1,0 +1,40 @@
+{
+  "repository": "https://github.com/lukeslp/game-riffs",
+  "commit": "7d12e797c85d3d8f4b6b477cefc8092c2a5383dc",
+  "ref": "origin/master",
+  "directories": [
+    "slant"
+  ],
+  "snapshotDate": "2026-10-11",
+  "role": "Private source mirror; development and deployment remain in game-riffs.",
+  "files": {
+    "slant/build-levels.cjs": "7be19c38813d7d64393ccb9e3b35c11dc2a72dd303979dca14d9be96db0e423d",
+    "slant/engine.js": "7a585973834b6de4ab81d02eacfc4cc094b62b5022afb096eabc7dafc25e1bf8",
+    "slant/favicon.svg": "a5c5f57860ad12cc18f8af349df5e74398f7c95f610e4e2ed5c7cf83f314495d",
+    "slant/fonts/IBMPlexMono-500.woff2": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22",
+    "slant/fonts/IBMPlexSans-400.woff2": "db71f8a28ad8501544fb4e7668e3c6d0b731760b6f20de3525ebaeba597f1922",
+    "slant/fonts/OFL.txt": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da",
+    "slant/index.html": "8d56155910ff01916a83b9e0ee9c7c4defb6b6e41c6d8bf8dc89a3cf3cad32a9",
+    "slant/levels.js": "ed16190f1ee8181a5a1d2b199b2388b862314e3d33483835be6292c50944ffe0",
+    "slant/og.png": "1257ddce745a7d479fda044da36ce5f5fec7ca19c03b6bd6b1880ff018b35ab8",
+    "slant/paint-input.js": "8962d1e56e3d1ba75fb4717e8f3513b2a6db0b4c0340ee939fdaa27009c51248",
+    "slant/regions.js": "96feb60db1335129c0fa0f433346d0eee49eac133b988957e9efcfbf300cb23b",
+    "slant/score-clock.js": "00ea28741228b25a91f2b996bd84013a158abf0b78d7b744fb04bb83e69e5e83",
+    "slant/scores.js": "0fe431cdbe95e17deff20a73a1c066929e454c0bed1622358bd7589a19e3a3ed",
+    "slant/slant.css": "5d961d98382c46a1f957746fa64933375b2bbcc9a0d3572d994178d6fa10d675",
+    "slant/slant.js": "9ca7f353e7b30174b6aaa9675ca49796ebe32feb19d100317e3bb2fca0e73d1e",
+    "slant/test-capture.cjs": "09fe3b01348e30b96a16888aaa029236a2dbd39135dbcccf0cd151de6967e3de",
+    "slant/test-download.cjs": "54104724baf4839548f13e1d7476577db44397436c02f248dd2bb73114403c5a",
+    "slant/test-engine.cjs": "6c869ad5faa415bac3a9c8574df26c182411b07a2b01a4983d0a4554245af4c3",
+    "slant/test-feedback.cjs": "b07e3ffbc781b51a20f73e351e5c3c66ec6c289220bba45e0a1a6c8362be21a0",
+    "slant/test-free.cjs": "550be924da0f7fe7f23a9fb647093497dac15194f64b330b8f35d0e758eb59a7",
+    "slant/test-locks.cjs": "757517af2d8d2cc091b8604f8807d134da4195cb4274b0bb2c5674b7b2f3577e",
+    "slant/test-modes.cjs": "1e4896cf6ee4e6c7b4c7cfab73f582a5f795eb4c769ed99ac83fc0e81e8f4560",
+    "slant/test-regions-ui.cjs": "6b93c8a0751402328c9cfb813ee844905340560312ec5ce4b9c3bf9da3db2f44",
+    "slant/test-regions.cjs": "7449c0186b84596cafc3b013b7ad9a083c7b0110d3229d37458e44f75cd60922",
+    "slant/test-scores.cjs": "5e5ca96a52926402d11db170d16bcd537b46fd5ee68a303e911669b12ba8205a",
+    "slant/test-settled-clues.cjs": "0e1bc86133fd4209ade5ba454d0a7b201c2e9d4d5563fb59b70b753a38d5ab0e",
+    "slant/test-share.cjs": "711e52a7377068bcac0a67f7fef24249d69b823680feb36326e0b33816d28d9c",
+    "slant/test-ui.cjs": "74ec240cd0e50c5018752c96f8cb74fdff20b2be0c66d48deeecb5638a98c617"
+  }
+}

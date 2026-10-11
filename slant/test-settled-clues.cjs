@@ -1,0 +1,17 @@
+'use strict';
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),E=require('./engine'),L=require('./levels');
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'/Users/luke/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright-core');
+(async()=>{const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/Users/luke/Library/Caches/ms-playwright/chromium-1228/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing'});try{
+for(const theme of ['light','dark']){const p=await browser.newPage({viewport:{width:390,height:844},colorScheme:theme,reducedMotion:'reduce'}),board=L.find(b=>b.id==='intro3'),state=E.count(board,2).answer.slice();state[0]=0;const errors=[];p.on('pageerror',e=>errors.push(e.message));
+if(!process.env.PUBLIC_BASE)await p.route('http://slant.test/**',r=>r.fulfill({path:path.join(__dirname,new URL(r.request().url()).pathname.slice(1)||'index.html')}));
+await p.addInitScript(({id,state})=>{localStorage.clear();localStorage.setItem('slant.primer.v1','1');localStorage.setItem('slant.current.v1',JSON.stringify({version:1,at:id,boards:{[id]:state},generated:null}));},{id:board.id,state});
+await p.goto((process.env.PUBLIC_BASE||'http://slant.test/')+'?puzzle=intro3');await p.waitForFunction(()=>window.__slant);
+const clue=i=>p.locator('#board .clue[data-vertex="'+i+'"]'),opacity=n=>n.evaluate(n=>getComputedStyle(n).opacity);
+for(const i of [7,11,13,15])assert.equal(await opacity(clue(i)),'0','confirmed clue and circle hidden');for(const i of [1,4,10])assert.equal(await opacity(clue(i)),'1','shared unfinished clue remains');assert(!await p.evaluate(()=>__slant.S.solved));
+const cell=p.locator('#board .cell').nth(8);await cell.focus();assert.equal(await cell.evaluate(n=>getComputedStyle(n,'::after').display),'none','settled cursor circle hidden');const before=await p.evaluate(()=>__slant.S.cells.slice());await cell.click();assert.deepEqual(await p.evaluate(()=>__slant.S.cells),before,'settled cell protected');
+await p.screenshot({path:'/tmp/slant-settled-clues-'+theme+'.png'});
+await p.locator('#settings-btn').click();await p.locator('#mode').selectOption('Hard');await p.locator('#settings').evaluate(n=>n.close());assert.equal(await opacity(clue(15)),'1','Hard retains editable clues');await p.locator('#settings-btn').click();await p.locator('#mode').selectOption('Standard');await p.locator('#settings').evaluate(n=>n.close());assert.equal(await opacity(clue(15)),'0');
+await p.locator('#restart-btn').click();assert.equal(await opacity(clue(15)),'1','restart restores clues');await p.locator('#undo-btn').click();assert.equal(await opacity(clue(15)),'0','Undo reset restores confirmation');
+await p.locator('#hint-btn').click();await p.locator('#hint-btn').click();assert(await p.evaluate(()=>__slant.S.solved));assert.equal(await p.locator('#board .vertices').evaluate(n=>getComputedStyle(n).opacity),'0','full solve still hides whole layer');await p.locator('#undo-btn').click();assert.equal(await opacity(clue(1)),'1','Undo solve restores unfinished clue');assert.equal(await opacity(clue(15)),'0','Undo solve preserves confirmed clue');assert.deepEqual(errors,[]);await p.close();}
+console.log('PASS completed-section clues in both themes: shared clues, mode switch, cursor, protection, reset, Undo and solve');
+}finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});
