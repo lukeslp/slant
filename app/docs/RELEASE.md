@@ -36,6 +36,17 @@ signing steps run from Luke's own Terminal.
 | App Store Connect | "Slant: Line Puzzle", app id 6834941283, bundle id resource TSD26XQ3UR, SKU `slant-ios`, version 1.0 Prepare for Submission. Description, keywords, promotional text, subtitle, support/marketing/privacy URLs, copyright, category Games > Puzzle, age-rating answers (all None/No) and 12 screenshots (6.9" iPhone, 13" iPad, Duo outer) are set. App Privacy "Data Not Collected" is saved but **not published**: its Publish button is an attestation for Luke to click. Price and availability not set yet |
 | Google Play | "Slant: Line Puzzle", app id 4975454377394591407, Game, Free, both declarations ticked, automatic protection left on (as Notan). App signing key swapped to the slant key with PEPK on 2026-11-14 (now D9:C7:71:83:…:80:91:F9; Google's generated 63:BB:90:79:… was never used). Encryption public key: `~/workspace/play-packets-20261111/play-signing/slant/encryption_public_key.pem` (SHA-256 56f8c613…). No release uploaded yet |
 
+## Where 1.0.0 (1) stands (2026-11-14 evening)
+
+Luke's go for all four channels: "Yes, all four".
+
+| Channel | State |
+|---|---|
+| App Store | Build 1 uploaded (altool), processed VALID and attached to version **1.0.0**, which is **ready to submit, not submitted**. Free in all 175 territories; App Privacy "Data Not Collected" published; content rights, export compliance (no non-exempt encryption), age rating, review contact and notes set. "Add for Review" is Luke's |
+| Google Play | Internal testing: release 1 (1.0.0) **available to internal testers** (email list luke-only) since 15:16 PST. The store listing, graphics and App content forms are not filled yet, so Play shows a temporary name; they are needed before a closed test |
+| Direct download | https://dr.eamer.dev/downloads/android/slant/slant-1.0.0-1-244d1fa3.apk (SHA-256 `244d1fa3…63ab`), page https://lukesteuber.com/downloads/apps/slant/ (downloads-site `c6ec008`; toolkit PR 28) |
+| F-Droid (LocalType releases) | Slant 1.0.0 (1) in the index (target `20261114-slant-1.0.0-1-244d1fa3`, downloads-site `942e2a3`; keyboard PR 281) |
+
 ## 1. Sign and build (Terminal.app on napoleon)
 
 ```bash
