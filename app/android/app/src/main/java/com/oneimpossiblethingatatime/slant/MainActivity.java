@@ -123,6 +123,10 @@ public class MainActivity extends BridgeActivity {
             if (color == null) return;
             runOnUiThread(() -> {
                 if (gameViewport != null) gameViewport.setBackgroundColor(color);
+                // The band beside a camera cutout can sit outside the content view, where
+                // the window background (the system theme's page color) shows. Without this
+                // a player who picks Dark on a light-themed phone gets a white band on top.
+                getWindow().getDecorView().setBackgroundColor(color);
             });
         }
 
