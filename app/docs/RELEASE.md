@@ -34,7 +34,7 @@ signing steps run from Luke's own Terminal.
 | Store | Record |
 |---|---|
 | App Store Connect | "Slant: Line Puzzle", app id 6834941283, bundle id resource TSD26XQ3UR, SKU `slant-ios`, version 1.0 Prepare for Submission. Description, keywords, promotional text, subtitle, support/marketing/privacy URLs, copyright, category Games > Puzzle, age-rating answers (all None/No) and 12 screenshots (6.9" iPhone, 13" iPad, Duo outer) are set. App Privacy "Data Not Collected" is saved but **not published**: its Publish button is an attestation for Luke to click. Price and availability not set yet |
-| Google Play | "Slant: Line Puzzle", app id 4975454377394591407, Game, Free, both declarations ticked, automatic protection left on (as Notan). Google-generated signing key in use: 63:BB:90:79:…:EF:2F:F9. Encryption public key saved to `~/workspace/play-packets-20261111/play-signing/slant/encryption_public_key.pem` (SHA-256 56f8c613…). Nothing uploaded or saved in App signing |
+| Google Play | "Slant: Line Puzzle", app id 4975454377394591407, Game, Free, both declarations ticked, automatic protection left on (as Notan). App signing key swapped to the slant key with PEPK on 2026-11-14 (now D9:C7:71:83:…:80:91:F9; Google's generated 63:BB:90:79:… was never used). Encryption public key: `~/workspace/play-packets-20261111/play-signing/slant/encryption_public_key.pem` (SHA-256 56f8c613…). No release uploaded yet |
 
 ## 1. Sign and build (Terminal.app on napoleon)
 
