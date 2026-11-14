@@ -17,7 +17,7 @@ eq(R.sections(p,diamond,true).regions.length,0,'a loop blocks every fill outside
 const loop=freeSections(p,diamond,true);eq(loop.regions.length,5,'free draw fills the loop interior and its four corners');ok(loop.colors.every(c=>c>=0),'a fully drawn free board fills every triangle');ok(loop.settled.every(v=>!v),'nothing settles in free draw');
 eq(freeSections(withClue(1,2),[1,0,0,0]).regions.length,1,'free draw ignores numbers');eq(freeSections(p,[1,0,0,0]).regions[0].triangles,[0,3],'free draw never fills an undecided square');
 {let seed=7;const rnd=()=>(seed=(seed*1103515245+12345)>>>0)/4294967296;
- for(const size of[6,8,10]){const board={w:size,h:size,clues:Array((size+1)**2).fill(-1)},lattice=Array.from({length:size*size},(_,i)=>(i%size+Math.floor(i/size))%2?2:1);
+ for(const size of[6,8,10,12,16]){const board={w:size,h:size,clues:Array((size+1)**2).fill(-1)},lattice=Array.from({length:size*size},(_,i)=>(i%size+Math.floor(i/size))%2?2:1);
   for(let k=0;k<=120;k++){const cells=k===120?lattice:Array.from({length:size*size},()=>rnd()<.85?(rnd()<.5?1:2):0),r=freeSections(board,cells);
    for(const g of r.regions){ok(g.color>=0&&g.triangles.every(t=>cells[Math.floor(t/4)]),'free section coloured and fully drawn');for(const n of g.neighbors)ok(n.color!==g.color,'free neighbours distinct');}}
   ok(freeSections(board,lattice).colors.every(c=>c>=0),'diamond lattice of loops fills completely '+size);}}

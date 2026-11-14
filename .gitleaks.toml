@@ -1,0 +1,8 @@
+# SOURCE.json lists SHA-256 checksums of the copied game files; gitleaks reads
+# "path": "<hex>" as a generic API key. Nothing secret lives in it.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "File checksum manifests"
+paths = ['''^SOURCE\.json$''']
