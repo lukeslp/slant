@@ -97,7 +97,15 @@ for every upload.
    `ageRatingDeclarations.socialMedia` = No).
 4. TestFlight: internal group first.
 
-## 4. After that
+## 4. Downloads page (needs Luke's yes)
+
+`/downloads/apps/slant/` is drafted and staged, not published: catalog row and
+curated page in android-release-toolkit PR 26 (`assets/slant/`), stage with a
+check-then-replace manifest in `~/workspace/slant-downloads-stage-20261114/`
+(its README has the publish steps). It offers the web game now; the Android
+button arrives with `record-download` once the APK is signed.
+
+## 5. After that
 
 F-Droid (the LocalType releases repository, owned batch) and the downloads
 site (`android-download-publish` skill) both take the signed APK; see
