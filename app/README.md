@@ -1,41 +1,38 @@
-# Notan (iOS + Android)
+# Slant (iOS + Android)
 
-Native Capacitor shell for **Notan**, the black-and-white nonogram at
-<https://playnotan.com/>. The game is the plain HTML/CSS/JS at the root of
-this repository (synced from `notan/` in lukeslp/game-riffs); this folder
-wraps it for iPhone, iPad and Android as a sealed offline payload. It follows
-Hexsweeper's native shell (`app/` in lukeslp/hexsweeper) folder for folder.
+Native Capacitor shell for **Slant**, the diagonal-line logic puzzle at
+<https://lukesteuber.com/games/slant/>. The game is the plain HTML/CSS/JS in
+`../slant/` (synced from `slant/` in lukeslp/game-riffs); this folder wraps it
+for iPhone, iPad and Android as a sealed offline payload. It is Notan's shell
+(`app/` in lukeslp/notan, itself modeled on Hexsweeper's) folder for folder,
+plus an iPhone Duo layout and a share-sheet path for the Download button.
 
-The app opens straight onto the board, exactly like the web game: level 1 on
-a first launch, otherwise wherever the saved game left off. Nothing opens by
-itself. How to play, Levels and Settings are the game's own sheets.
-
-## Syncs from game-riffs
-
-`tools/publish-notan-source.sh` in game-riffs copies `notan/` here with
-`rsync -a --delete`; since game-riffs PR 143 it excludes `/app`, so syncs
-leave this folder alone. Keep that exclude.
+The app opens straight onto the board, exactly like the web game: the four
+one-idea opening boards on a first launch, otherwise wherever the saved game
+left off. Settings and How to play are the game's own sheets.
 
 ## Decisions for the owner
 
 | Decision | Proposed | Why |
 |---|---|---|
-| iOS bundle id and Android application id | **`com.playnotan.app`** (one id for both, as Hexsweeper shares one). Confirmed by Luke 2026-11-13 | Reverse of the game's own domain, playnotan.com, the pattern of Luke's other domain-named apps (`com.naqbu.app`, `com.diachronica.app`). Hexsweeper's own id, `app.hexodus.ios`, is inherited from an abandoned app and is not a pattern to copy. **Permanent after the first upload to either store.** Change it in `capacitor.config.js`, `android/app/build.gradle` (`namespace`, `applicationId`, plus the Java package folder) and `PRODUCT_BUNDLE_IDENTIFIER` in the Xcode project before any upload if you want another |
-| App Store name | `Notan` (fallback `Notan Nonogram`) | The App Store requires a unique name; `Notan` may be taken. The home-screen name stays `Notan` either way (`CFBundleDisplayName`) |
-| Google Play title | `Notan: Nonogram` | Play titles need not be unique; the suffix helps search |
-| Android backup | Off | Matches Hexsweeper 1.0.10. Progress is one small `ink.v1` value; carrying it to a new phone would need Hexsweeper's `TravelingData` approach. A follow-up, not a blocker |
+| iOS bundle id and Android application id | **`com.oneimpossiblethingatatime.slant`** (one id for both). **Not confirmed yet** | Slant has no domain of its own; this follows Minimal Primitives' `com.oneimpossiblethingatatime.minimalprimitives`. **Permanent after the first upload to either store.** To change it: `capacitor.config.js`, `android/app/build.gradle` (`namespace`, `applicationId`, plus the Java package folder), `res/values/strings.xml`, and `PRODUCT_BUNDLE_IDENTIFIER` in the Xcode project |
+| App Store name | `Slant: Line Puzzle` (fallback `Slant Logic Puzzle`) | "Slant" alone is almost certainly taken (Simon Tatham's collection and several Gokigen Naname apps; "Aurora Slant: Diagonal Logic" uses "Diagonal Logic"). The home-screen name stays `Slant` (`CFBundleDisplayName`) |
+| Google Play title | `Slant: Line Puzzle` | Play titles need not be unique; the suffix helps search |
+| Android backup | Off | As Notan and Hexsweeper |
 | Version | 1.0.0, build 1 / versionCode 1 | Fresh records on both stores |
+| Game commit | game-riffs `7fb1780` | Has "color arrives at the solve" (`13e94ad`) and the Standard fill fix (`cf05b95`). Minimal Primitives pins Slant at `1e8d92e`, before both |
 
 ## The names
 
 | Thing | Value |
 |---|---|
-| Product / display name | **Notan** |
-| Repository | `lukeslp/notan`, this folder (`app/`) |
-| Game source | the repository root, synced from game-riffs `notan/` |
-| iOS bundle id / Android application id | `com.playnotan.app` |
-| Apple team | `596T7J7FB6` (Hexsweeper's), automatic signing |
-| App Store Connect record | not created yet |
+| Product / display name | **Slant** |
+| Repository | `lukeslp/slant` (private), this folder (`app/`) |
+| Game source | `../slant/`, synced from game-riffs `slant/` by `../tools/sync-from-game-riffs.sh` |
+| iOS bundle id / Android application id | `com.oneimpossiblethingatatime.slant` (proposed) |
+| Apple team | `596T7J7FB6`, automatic signing |
+| Android signing | android-release-toolkit profile `slant` (`SLANT_ANDROID_*`) |
+| Store records | none yet |
 
 ## Layout
 
@@ -43,103 +40,103 @@ leave this folder alone. Keep that exclude.
 |---|---|
 | `www/` | The game. Generated: **do not hand-edit** |
 | `WWW_SOURCE.txt` | Which commit `www/` came from, plus per-file checksums |
-| `scripts/export-www.py` | The only writer of `www/`; lists its three deliberate changes |
-| `capacitor.config.js` | Capacitor config (`.js`, not `.ts`, as in Hexsweeper) |
-| `ios/` | Xcode project, automatic signing, `PrivacyInfo.xcprivacy` |
+| `scripts/export-www.py` | The only writer of `www/`; lists its six deliberate changes |
+| `native/` | The two payload files this folder owns: `duo-layout.css`, `native.js` |
+| `capacitor.config.js` | Capacitor config (`.js`, not `.ts`) |
+| `ios/` | Xcode project, automatic signing, UIScene life cycle, `DuoBridge.swift` + `duo-fold.js`, `PrivacyInfo.xcprivacy` |
 | `android/` | Capacitor Android project, API 24–36, no permissions |
 | `scripts/smoke.sh` | Payload integrity, offline posture, both `cap sync`s |
 | `scripts/android-build.sh` | JDK 21 Gradle wrapper for APK/AAB builds and unit tests |
-| `scripts/generate-icons.sh` | App icons rendered from `../favicon.svg` |
-| `app-store/` | Store copy, screenshots, icons, privacy and rating answers |
+| `scripts/generate-icons.sh` | App icons rendered from `../slant/favicon.svg` |
+| `scripts/capture-duo.sh` | Store screenshots on the iPhone Duo simulator from Debug scenes |
+| `app-store/` | Store copy, screenshots, icons, privacy page and answers |
 | `docs/` | Release steps and device checks |
 | `licenses/`, `THIRD-PARTY-NOTICES.md` | Notices for bundled third-party material |
 
 ### What `export-www.py` changes
 
-The payload is the files listed in the game's `runtime.json`, unchanged
-except for three edits, each asserted so a moved target fails the export:
+The payload is the files listed in the game's `runtime.json`, changed in six
+ways, each asserted so a moved target fails the export:
 
-1. The GoatCounter `<script>` is removed. The app sends nothing.
-2. A Content-Security-Policy `<meta>` limits fetches, sockets, scripts,
+1. The home-screen files (`pwa.js`, `sw.js`, `manifest.webmanifest`, `icons/`)
+   and the public score files (`scores.js`, `score-clock.js`) stay out. A
+   service worker has no place in a web view, and without `scores.js` the
+   game has no Scores instead of posting runs to an address the app lacks.
+2. The GoatCounter, `pwa.js` and score `<script>`s and the manifest and
+   touch-icon `<link>`s are removed. The app sends nothing.
+3. A Content-Security-Policy `<meta>` limits fetches, sockets, scripts,
    styles, fonts and images to the bundled files. The Access frame reads it
-   and hides its camera and eye-tracker rows, which need WebAssembly or a
-   socket to 127.0.0.1 and could not work in the app anyway.
-3. Quick play's **Share blank** link points at `https://playnotan.com/`
-   instead of the WebView's own origin, which nobody else could open.
-
-These are better made in the game source eventually (a `native` flag the
-page reads), as Hexsweeper's exporter does in its own source. Until then
-they live here so game-riffs stays untouched.
+   and hides its camera and eye-tracker rows, which could not work in the app.
+4. The `<title>` is just "Slant".
+5. Shared puzzle links point at `https://lukesteuber.com/games/slant/`
+   instead of the web view's own origin, which nobody else could open.
+6. `native/duo-layout.css` and `native/native.js` are added and linked.
 
 ### Native behavior
 
 - **Safe areas.** The game pads itself with `env(safe-area-inset-*)` under
-  `viewport-fit=cover`. iOS hides the status bar and lets the page run edge
-  to edge. Android runs immersive (bars hidden, swipe to show) and wraps the
-  WebView in Hexsweeper's `GameViewport`, which keeps the page clear of
-  camera cutouts; the strip it leaves is painted the page's color, reported
-  by a small script the shell injects (the page itself is untouched).
+  `viewport-fit=cover`. iOS hides the status bar; Android runs immersive and
+  wraps the WebView in Hexsweeper's `GameViewport`, painting the strip beside
+  a camera cutout with the page's color.
 - **Theme.** The game follows the system light or dark setting unless the
-  player picks one in Settings. Android's theme is DayNight so the WebView
-  reports `prefers-color-scheme` correctly; launch screens use the page
-  color (white or black) so nothing flashes.
+  player picks one in Settings. Launch screens use the page color.
 - **System Back** (Android) closes the topmost open sheet, then leaves.
-- **Saves** are the game's own `localStorage` key `ink.v1`. They survive a
-  relaunch on both platforms. On Android a move made less than about a
-  second before a force-stop can be lost (the WebView commits storage in
-  batches); iOS kept even an immediate kill. See `docs/DEVICE_VERIFY.md`.
-- **Display size change** (Android) reloads the page once so it lays out
-  for the new density; the save makes that invisible.
+- **Saves** are the game's own `localStorage` keys (`slant.*.v1`).
+- **Download** (the colored-puzzle picture, in Settings and after a Free
+  draw) opens the system share sheet with the PNG: Save Image, Save to Files,
+  Drive, Messages. Neither web view saves a blob download by itself, so
+  `native.js` hands the picture to `PictureSaver` (iOS) or
+  `MainActivity.savePicture` (Android, through a FileProvider on
+  `cache/shared/`). iOS's Save Image needs `NSPhotoLibraryAddUsageDescription`
+  (add-only, asked the first time only).
+- **Share** copies the puzzle's lukesteuber.com link. Android's WebView has
+  no Web Share, so the game's own fallback copies the link there.
+- **iPhone Duo.** `DuoBridge.swift` and `duo-fold.js` (snippets `d787f31`,
+  as in Minimal Primitives PR 27) give the page the fold. In book pose the
+  board fills the trailing page and the readout, toolbar and sheets move to
+  the leading page; in laptop pose the board stays above the fold and sheets
+  open on the lower half. Flat and closed use the game's own layout.
 - **Links** open in the system browser.
+
+The iOS shell uses the UIScene life cycle (`SceneDelegate.swift` and
+`UIApplicationSceneManifest` in `Info.plist`). Keep both: UIKit refuses to
+launch an iOS 27 SDK build without them (Apple TN3187). Keep Capacitor at 8.5
+or later (Notan's README explains the cold-start `resume` race in 8.3.1).
 
 ## Updating the game
 
 ```bash
-# after game-riffs has synced a new notan/ into the repository root
+tools/sync-from-game-riffs.sh <game-riffs commit>   # from the repository root
 cd app
-python3 scripts/export-www.py          # rewrites www/ and WWW_SOURCE.txt
-scripts/smoke.sh --with-source ..      # or ~/workspace/game-riffs/notan
+python3 scripts/export-www.py
+scripts/smoke.sh --with-source ../slant
 ```
 
-`export-www.py` refuses to run when the game files have uncommitted
-changes, so `WWW_SOURCE.txt` always names a real commit.
+The sync only runs `git archive` in the game-riffs checkout; it never touches
+that checkout's branch. `export-www.py` refuses to run when the game files or
+`native/` have uncommitted changes, so `WWW_SOURCE.txt` names real commits.
 
 ## Verify
 
 ```bash
 pnpm install
 pnpm smoke                                   # integrity, offline, cap sync
-scripts/smoke.sh --with-source ~/workspace/game-riffs/notan
-pnpm android:build:debug                     # android/app/build/outputs/apk/debug/app-debug.apk
-scripts/android-build.sh test                # JVM unit tests (viewport bounds, backdrop color)
-pnpm android:bundle:release                  # release AAB, unsigned unless NOTAN_ANDROID_* are set
+scripts/smoke.sh --with-source ../slant
+scripts/android-build.sh test                # JVM unit tests
+scripts/android-build.sh assembleDebug
+JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home ./android/gradlew --project-dir android lintRelease
 pnpm cap:open:ios                            # Xcode
 ```
 
-Capacitor 8 needs Node 22+, an Android SDK with API 36 and JDK 21 (the
-wrapper finds Homebrew's keg-only `openjdk@21`). iOS builds need Xcode 26 or
-later. Release steps are in [docs/RELEASE.md](docs/RELEASE.md).
+The game's own tests live in `../slant/` (`node test-engine.cjs`, and the
+Playwright ones with `PLAYWRIGHT_MODULE` and `AXE_PATH` set); see
+[docs/DEVICE_VERIFY.md](docs/DEVICE_VERIFY.md) for what was run.
 
-The iOS shell uses the UIScene life cycle (`ios/App/App/SceneDelegate.swift`
-and `UIApplicationSceneManifest` in `Info.plist`). Keep both: UIKit refuses to
-launch an app built with the iOS 27 SDK without them (Apple TN3187). Build
-1.0.0 (1), uploaded 2026-11-13, predates them and would not launch on iOS 27.
-
-Use Capacitor 8.5 or later with scenes. Under the scene life cycle UIKit posts
-`UIApplication.willEnterForegroundNotification` on a cold start, and Capacitor
-8.3.1 answers it by running a `resume` event in the page before the page has
-loaded (the console shows "JS Eval error"). Capacitor 8.5 skips lifecycle
-events until the first load is done. On 2026-11-14, on iOS 27.2 simulators on a
-very busy Mac, 7 of 20 cold launches of the 8.3.1 shell (1.0.0 (2)) sat on a
-blank page for the 20–45 s they were watched; one sample showed the page's
-start-up `prompt()` to the native bridge still unanswered while the app was
-idle. All 7 came in one 15-minute stretch; the other 13 loaded. All 11
-launches on 8.5.3 loaded. Not seen on a device.
-
-To check a build, launch it on an iOS 27 simulator with
-`xcrun simctl launch --console-pty <device> com.playnotan.app`: the console
-must print `⚡️  WebView loaded` (a busy Mac can take 30 s), the screen must show
-the board, and the log must have no "UIScene life cycle is required" line.
+To check an iOS build, launch it on an iOS 27 simulator with
+`xcrun simctl launch --console-pty <device> com.oneimpossiblethingatatime.slant`:
+the console must print `⚡️  WebView loaded` (a busy Mac can take a minute),
+the screen must show the board, and the log must have no "UIScene life cycle
+is required" line. Release steps are in [docs/RELEASE.md](docs/RELEASE.md).
 
 ## License
 

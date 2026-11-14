@@ -1,17 +1,24 @@
 #!/bin/bash
-# Store screenshots of Notan on the iPhone Duo simulator, outer or inner screen.
+# Store screenshots of Slant from a simulator: the 6.9" iPhone, the 13" iPad,
+# or the iPhone Duo's outer or inner screen.
 #
-#   scripts/capture-duo.sh <udid> <outer|inner> <outdir> [path/to/App.app]
+#   scripts/capture-shots.sh <udid> <phone|ipad|outer|inner> <outdir> [path/to/App.app]
 #
 # Needs a Debug build: the scenes come from the Debug-only `-SlantShot` launch
 # argument (StoreShot in ios/App/App/AppDelegate.swift), so no taps are needed.
 # A Release build ignores it, and the script refuses its shots.
 #
+#   phone  6.9" iPhone (17 Pro Max), 1320x2868
+#   ipad   13" iPad Pro, 2064x2752
 #   outer  folded Duo, `simctl io --display=1`, 1398x2034
 #   inner  unfolded Duo (Device Hub), `--display=LCD-1`, 2007x2853 portrait or
 #          2853x2007 landscape
 #
-# Shots: 01-in-progress.png (Owl), 02-solved.png (Fish), 03-levels-dark.png.
+# Shots: 01-in-progress.png (board 42 half drawn), 02-solved.png (board 41 in
+# color), 03-free-draw-dark.png (Free draw, every section filled),
+# 04-how-to-play-dark.png. For the Duo's inner screen, launch with
+# SLANT_DUO=book or laptop to fake a half-open fold (the simulator cannot fold
+# from the command line).
 # Each one is refused when it is the wrong size, black, a blank page (the game
 # never painted), or the wrong theme for its scene, and when the app did not
 # log the scene. Kept shots are flattened to opaque RGB, as App Store Connect
@@ -21,17 +28,20 @@
 #     -destination "id=<udid>" -derivedDataPath /tmp/slant-dd CODE_SIGNING_ALLOWED=NO build
 #   # App: /tmp/slant-dd/Build/Products/Debug-iphonesimulator/App.app
 #
-# Env: SLANT_SCENES (default "progress solved levels"), SLANT_TIMEOUT seconds
+# Env: SLANT_SCENES (default "progress solved free help"), SLANT_DUO, SLANT_TIMEOUT seconds
 # per scene (default 120; a first launch on a busy Mac can take 30 s to paint).
 set -uo pipefail
 
-usage() { echo "usage: $0 <udid> <outer|inner> <outdir> [path/to/App.app]" >&2; exit 2; }
+usage() { echo "usage: $0 <udid> <phone|ipad|outer|inner> <outdir> [path/to/App.app]" >&2; exit 2; }
 [ $# -ge 3 ] || usage
 UDID=$1; SCREEN=$2; OUT=$3; APP=${4:-}
 BUNDLE=com.oneimpossiblethingatatime.slant
-SCENES=${SLANT_SCENES:-progress solved levels}
+SCENES=${SLANT_SCENES:-progress solved free help}
+DUO_ARGS=(); [ -n "${SLANT_DUO:-}" ] && DUO_ARGS=(-SlantDuo "$SLANT_DUO")
 TIMEOUT=${SLANT_TIMEOUT:-120}
 case "$SCREEN" in
+  phone) DISPLAY_ARG=primary;   SIZES="1320x2868" ;;
+  ipad)  DISPLAY_ARG=primary;   SIZES="2064x2752" ;;
   outer) DISPLAY_ARG=1;     SIZES="1398x2034" ;;
   inner) DISPLAY_ARG=LCD-1; SIZES="2007x2853 2853x2007" ;;
   *) usage ;;
@@ -55,7 +65,7 @@ if [ -n "$APP" ]; then
 fi
 
 mkdir -p "$OUT"
-WORK=$(mktemp -d "${TMPDIR:-/tmp}/slant-duo.XXXXXX")
+WORK=$(mktemp -d "${TMPDIR:-/tmp}/slant-shots.XXXXXX")
 trap 'rm -rf "$WORK"' EXIT
 
 shot() { xcrun simctl io "$UDID" screenshot --display="$DISPLAY_ARG" "$1" >/dev/null 2>&1; }
@@ -73,14 +83,15 @@ n=0
 for scene in $SCENES; do
   n=$((n + 1))
   case "$scene" in
-    progress) name=01-in-progress; want=light ;;
-    solved)   name=02-solved;      want=light ;;
-    levels)   name=03-levels-dark; want=dark ;;
-    *) fail "unknown scene '$scene' (progress, solved, levels)" ;;
+    progress) name=01-in-progress;       want=light ;;
+    solved)   name=02-solved;            want=light ;;
+    free)     name=03-free-draw-dark;    want=dark ;;
+    help)     name=04-how-to-play-dark;  want=dark ;;
+    *) fail "unknown scene '$scene' (progress, solved, free, help)" ;;
   esac
   xcrun simctl terminate "$UDID" "$BUNDLE" >/dev/null 2>&1
   start=$(date '+%Y-%m-%d %H:%M:%S')
-  xcrun simctl launch "$UDID" "$BUNDLE" -SlantShot "$scene" >/dev/null \
+  xcrun simctl launch "$UDID" "$BUNDLE" -SlantShot "$scene" ${DUO_ARGS[@]+"${DUO_ARGS[@]}"} >/dev/null \
     || fail "launch failed for $scene"
   # Wait until the screen has painted and holds still for two frames.
   prev=""; ok=""; t0=$SECONDS
@@ -89,7 +100,7 @@ for scene in $SCENES; do
     cur="$WORK/$scene-$((SECONDS)).png"
     shot "$cur" || continue
     read -r w h mean sd <<<"$(stats "$cur")"
-    if awk -v s="$sd" 'BEGIN{exit !(s > 0.02)}' && [ -n "$prev" ] \
+    if awk -v s="$sd" 'BEGIN{exit !(s > 0.01)}' && [ -n "$prev" ] \
        && [ "$(magick compare -metric AE "$prev" "$cur" null: 2>&1 | cut -d' ' -f1)" = "0" ]; then
       ok=$cur; break
     fi
@@ -100,7 +111,7 @@ for scene in $SCENES; do
   [ -n "$ok" ] || fail "$scene: no steady, painted screen within ${TIMEOUT}s (last: ${w:-?}x${h:-?} mean ${mean:-?} sd ${sd:-?})"
   read -r w h mean sd <<<"$(stats "$ok")"
   echo " $SIZES " | grep -q " ${w}x${h} " || fail "$scene: ${w}x${h}, expected one of: $SIZES"
-  # The dark Levels sheet reads about 0.02, a black frame 0.
+  # A dark screen reads about 0.02 or more, a black frame 0.
   awk -v m="$mean" 'BEGIN{exit !(m > 0.005)}' || fail "$scene: black screen (mean $mean)"
   if [ "$want" = dark ]; then
     awk -v m="$mean" 'BEGIN{exit !(m < 0.5)}' || fail "$scene: expected the dark theme, mean $mean"

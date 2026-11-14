@@ -69,6 +69,7 @@ class SlantBridgeViewController: CAPBridgeViewController {
         webView.configuration.userContentController.add(WeakScriptHandler(saver), name: PictureSaver.messageName)
         self.saver = saver
         #if DEBUG
+        StoreShot.installPageCheck(on: webView)
         StoreShot.install(on: webView, duo: duo)
         #endif
     }
@@ -156,13 +157,26 @@ final class WeakScriptHandler: NSObject, WKScriptMessageHandler {
 //   solved    board 41 (7 x 7) solved, in color, light
 //   free      Free draw, 8 x 8, a lattice of closed diamonds, all filled, dark
 //   help      How to play, dark
+//   save      as solved, then presses Settings > Download (checks the share sheet)
 // The script writes the game's own saves (slant.*.v1) the first time the game reads
 // one, after levels.js is in, so the game opens the scene through its normal
 // start-up; the payload in www/ is untouched. Release builds compile none of this.
 // Add `-SlantDuo book` or `-SlantDuo laptop` to fake a fold on a simulator that
 // cannot fold, so the Duo layouts can be captured too.
+@MainActor
 enum StoreShot {
-    static let scenes = ["progress", "solved", "free", "help"]
+    static let scenes = ["progress", "solved", "free", "help", "save"]
+
+    /// Logs, from the page itself, whether the fold shim and both message handlers
+    /// reached it (the DuoBridge README's gotcha: a bridge the page never got still
+    /// logs payloads natively). Capacitor forwards console.log to the device log.
+    static func installPageCheck(on webView: WKWebView) {
+        let check = "addEventListener('load',function(){var h=window.webkit&&webkit.messageHandlers||{};" +
+            "console.log('SlantCheck duoFold='+!!window.DuoFold+' duoHandler='+!!h.duoFold+' saveHandler='+!!h.slantSave+" +
+            "' native='+!!document.querySelector('script[src=\"./native.js\"]')+' duoCss='+!!document.querySelector('link[href=\"./duo-layout.css\"]'));});"
+        webView.configuration.userContentController.addUserScript(
+            WKUserScript(source: check, injectionTime: .atDocumentEnd, forMainFrameOnly: true))
+    }
 
     static func install(on webView: WKWebView, duo: DuoBridge?) {
         guard let scene = UserDefaults.standard.string(forKey: "SlantShot"), scenes.contains(scene) else { return }
@@ -185,7 +199,7 @@ enum StoreShot {
     static let script = """
     (function () {
       'use strict';
-      var scene = '__SCENE__', theme = scene === 'free' || scene === 'help' ? 'dark' : 'light';
+      var scene = '__SCENE__', solved = scene === 'solved' || scene === 'save', theme = scene === 'free' || scene === 'help' ? 'dark' : 'light';
       var get = Storage.prototype.getItem, done = false;
       function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { console.error('SlantShot', e); } }
       function cells(id, moves) {
@@ -195,17 +209,16 @@ enum StoreShot {
         return c;
       }
       function seed() {
-        var L = window.SlantLevels, at = scene === 'solved' ? 's35' : 's49';
+        var L = window.SlantLevels, at = solved ? 's35' : 's49';
         localStorage.setItem('slant.primer.v1', '1');
         put('slant.settings.v1', { version: 1, theme: theme, motion: 'system', zoom: 'fit', difficulty: 'Normal', mode: 'Standard' });
-        put('slant.progress.v1', { version: 1, completed: L.slice(0, scene === 'solved' ? 40 : 41).map(function (l) { return l.id; }) });
-        var boards = {}; boards[at] = scene === 'solved' ? cells('s35', 999) : cells('s49', 40);
+        put('slant.progress.v1', { version: 1, completed: L.slice(0, solved ? 40 : 41).map(function (l) { return l.id; }) });
+        var boards = {}; boards[at] = solved ? cells('s35', 999) : cells('s49', 40);
         put('slant.current.v1', { version: 1, at: at, boards: boards, generated: null });
-        if (scene === 'free') {
-          var d = [];
-          for (var r = 0; r < 8; r++) for (var c = 0; c < 8; c++) d.push(r % 2 === c % 2 ? 1 : 2);
-          put('slant.free.v1', { version: 1, size: 8, open: true, boards: { 8: d } });
-        }
+        // Always written, so an earlier free scene cannot leave Free draw open.
+        var d = [];
+        for (var r = 0; r < 8; r++) for (var c = 0; c < 8; c++) d.push(r % 2 === c % 2 ? 1 : 2);
+        put('slant.free.v1', { version: 1, size: 8, open: scene === 'free', boards: { 8: d } });
       }
       Storage.prototype.getItem = function (k) {
         if (!done && String(k).indexOf('slant.') === 0 && window.SlantLevels) { done = true; Storage.prototype.getItem = get; seed(); }
@@ -213,6 +226,9 @@ enum StoreShot {
       };
       if (scene === 'help') addEventListener('load', function () {
         setTimeout(function () { document.getElementById('help-btn').click(); }, 600);
+      });
+      if (scene === 'save') addEventListener('load', function () {
+        setTimeout(function () { document.getElementById('download').click(); }, 1500);
       });
     })();
     """
