@@ -29,6 +29,13 @@ signing steps run from Luke's own Terminal.
 4. Optional: tell the Minimal Primitives release session which game commit
    this app ships, so the two stay in step.
 
+## Store records (created 2026-11-14, Luke's yes)
+
+| Store | Record |
+|---|---|
+| App Store Connect | "Slant: Line Puzzle", app id 6834941283, bundle id resource TSD26XQ3UR, SKU `slant-ios`, version 1.0 Prepare for Submission. Description, keywords, promotional text, subtitle, support/marketing/privacy URLs, copyright, category Games > Puzzle, age-rating answers (all None/No) and 12 screenshots (6.9" iPhone, 13" iPad, Duo outer) are set. App Privacy "Data Not Collected" is saved but **not published**: its Publish button is an attestation for Luke to click. Price and availability not set yet |
+| Google Play | "Slant: Line Puzzle", app id 4975454377394591407, Game, Free, both declarations ticked, automatic protection left on (as Notan). Google-generated signing key in use: 63:BB:90:79:…:EF:2F:F9. Encryption public key saved to `~/workspace/play-packets-20261111/play-signing/slant/encryption_public_key.pem` (SHA-256 56f8c613…). Nothing uploaded or saved in App signing |
+
 ## 1. Sign and build (Terminal.app on napoleon)
 
 ```bash
@@ -36,7 +43,8 @@ bash ~/workspace/play-builds-20261112/sign/slant-1.0.0-1.sh
 ```
 
 It makes the `slant` key (password straight into the Keychain), backs it up
-sops-encrypted on Beast (`~/signing-keys/android/slant.yaml`), runs smoke,
+sops-encrypted on Beast (`~/signing-keys/android/slant.yaml`), writes the PEPK
+key-swap ZIP (`play-signing/slant/slant-play-signing-key.zip`), runs smoke,
 unit tests and lint, builds and signs the release APK and AAB, checks both
 signers against the key, writes the toolkit's Play shelf, stages
 `Slant-1.0.0-1.aab` and its notes in `~/workspace/play-uploads/to-upload/`
