@@ -1,1 +1,1 @@
-A quiet diagonal-line logic puzzle: 54 boards, New Game+ and Free draw.
+A quiet little logic puzzle: draw diagonals, match the numbers, no loops.
