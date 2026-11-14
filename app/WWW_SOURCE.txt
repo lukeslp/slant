@@ -1,0 +1,31 @@
+# Vendored payload provenance. Do not hand-edit www/.
+#
+# Regenerate from app/ at the source commit below:
+#   python3 scripts/export-www.py
+# scripts/smoke.sh verifies these checksums; scripts/export-www.py lists
+# the six deliberate differences from the web game.
+
+source_repo     https://github.com/lukeslp/slant
+source_commit   fa17836be86e9926ef525d1f21408150f7e32fcd
+upstream        https://github.com/lukeslp/game-riffs slant/ at ff6f321
+native_commit   772ed341b31667fba2e256feb02bc830b74a89f8
+
+d4a1181bf44be5cf7ba114bd47618295f3ea8d7b6f69ebda4ff15e4c89681fb3  access.js
+443402b94535a6b6971c6d302bd70bcfff073152c4616f0939290d3158374a6c  bridge-client.js
+f4e473a77f734ce37510095cda2322bd0f8bcefd07d8febe9967a082a25f66f3  controls.css
+e114e25abf11a1bda8654c2f379c9e4899776d68ea1318fc3c61f17e513b46e8  controls.js
+803d76b57b41c5efd90fb5105c63e2d1bfc039f067885b49d2b3f6d0af7d47de  duo-layout.css
+7a585973834b6de4ab81d02eacfc4cc094b62b5022afb096eabc7dafc25e1bf8  engine.js
+a5c5f57860ad12cc18f8af349df5e74398f7c95f610e4e2ed5c7cf83f314495d  favicon.svg
+01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22  fonts/IBMPlexMono-500.woff2
+db71f8a28ad8501544fb4e7668e3c6d0b731760b6f20de3525ebaeba597f1922  fonts/IBMPlexSans-400.woff2
+7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da  fonts/OFL.txt
+c396bce13ef16e5624a2c5bd227c8a305d1d71e43f18030ca98e13ca9801796e  index.html
+ed16190f1ee8181a5a1d2b199b2388b862314e3d33483835be6292c50944ffe0  levels.js
+1fbddc51430f8b0ff7d08fd30c71575498ab205dad8425ba3a49463474cbf0a4  native.js
+1257ddce745a7d479fda044da36ce5f5fec7ca19c03b6bd6b1880ff018b35ab8  og.png
+8962d1e56e3d1ba75fb4717e8f3513b2a6db0b4c0340ee939fdaa27009c51248  paint-input.js
+235030745589f00baf51fbdedc382e05e3d00af5d809bb7b12babe40a3985c11  privacy.html
+96feb60db1335129c0fa0f433346d0eee49eac133b988957e9efcfbf300cb23b  regions.js
+277363a304c55d38dd298ae916a5fd910f2d55b0661ff120c96f0b116e2c82dc  slant.css
+c88533c3094e097b020235f01e92e2f59949b81ca07f933e3e017f38b61aadf1  slant.js

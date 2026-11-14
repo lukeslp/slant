@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The game's page color in the dark theme. -->
+    <color name="slant_page">#000000</color>
+</resources>

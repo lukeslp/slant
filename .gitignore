@@ -5,3 +5,6 @@ __pycache__/
 .env
 .env.*
 shots/
+
+# The release toolkit's handoff shelf (android-release handoff --project-root .)
+artifacts/
