@@ -43,7 +43,7 @@ Luke's go for all four channels: "Yes, all four".
 | Channel | State |
 |---|---|
 | App Store | Build 1 uploaded (altool), processed VALID and attached to version **1.0.0**. **Submitted for review 2026-11-14 evening (Luke: "let's submit"), Waiting for Review**, after a casual-voice pass over the store copy. Free in all 175 territories; App Privacy "Data Not Collected" published; content rights, export compliance (no non-exempt encryption), age rating, review contact and notes set. |
-| Google Play | Internal testing: release 1 (1.0.0) **available to internal testers** (email list luke-only) since 15:16 PST. The store listing, graphics and App content forms are not filled yet, so Play shows a temporary name; they are needed before a closed test |
+| Google Play | Internal testing: release 1 (1.0.0) **available to internal testers** (email list luke-only) since 15:16 PST. Store listing (casual copy, icon, feature graphic, 4 phone shots, assets not labeled as generated), category Game > Puzzle, contact email and website, and every App content form (privacy policy, sign-in none, no ads, not a government app, no financial or health features, no advertising ID, target 13+, Data safety "no data collected", content rating: ESRB Everyone / ACB General / ClassInd All ages) are saved but **not sent for review**: Play only sends them with a closed-test release, so the temporary name stays until then |
 | Direct download | https://dr.eamer.dev/downloads/android/slant/slant-1.0.0-1-244d1fa3.apk (SHA-256 `244d1fa3…63ab`), page https://lukesteuber.com/downloads/apps/slant/ (downloads-site `c6ec008`; toolkit PR 28) |
 | F-Droid (LocalType releases) | Slant 1.0.0 (1) in the index (target `20261114-slant-1.0.0-1-244d1fa3`, downloads-site `942e2a3`; keyboard PR 281) |
 
