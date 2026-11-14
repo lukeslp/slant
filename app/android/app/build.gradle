@@ -19,7 +19,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         // Same id as iOS; permanent after the first store upload.
         // Keep anything keyed to it reading ${applicationId}, never a literal.
-        versionCode 2
+        versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {

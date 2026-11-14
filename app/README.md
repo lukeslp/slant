@@ -48,7 +48,7 @@ left off. Settings and How to play are the game's own sheets.
 | `scripts/smoke.sh` | Payload integrity, offline posture, both `cap sync`s |
 | `scripts/android-build.sh` | JDK 21 Gradle wrapper for APK/AAB builds and unit tests |
 | `scripts/generate-icons.sh` | App icons rendered from `../slant/favicon.svg` |
-| `scripts/capture-duo.sh` | Store screenshots on the iPhone Duo simulator from Debug scenes |
+| `scripts/capture-shots.sh` | Store screenshots from the iPhone, iPad and Duo simulators, using the Debug scenes |
 | `app-store/` | Store copy, screenshots, icons, privacy page and answers |
 | `docs/` | Release steps and device checks |
 | `licenses/`, `THIRD-PARTY-NOTICES.md` | Notices for bundled third-party material |

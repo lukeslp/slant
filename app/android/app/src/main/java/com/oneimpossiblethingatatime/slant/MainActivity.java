@@ -150,8 +150,11 @@ public class MainActivity extends BridgeActivity {
         try {
             File dir = new File(getCacheDir(), "shared");
             if (!dir.isDirectory() && !dir.mkdirs()) return;
+            // Keep recent pictures: an app the player shared to (a mail draft, say)
+            // may read its file later. Older ones go.
+            long cutoff = System.currentTimeMillis() - 60 * 60 * 1000L;
             File[] old = dir.listFiles();
-            if (old != null) for (File f : old) f.delete();
+            if (old != null) for (File f : old) if (f.lastModified() < cutoff) f.delete();
             File out = new File(dir, name);
             try (FileOutputStream stream = new FileOutputStream(out)) {
                 stream.write(png);

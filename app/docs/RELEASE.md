@@ -27,7 +27,7 @@ signing steps run from Luke's own Terminal.
    store accepts the listing. Proposed home:
    `https://lukesteuber.com/games/slant/privacy.html` (add it to game-riffs
    `slant/`, or copy it onto Drummer). Luke's OK first.
-3. **Spelling fix.** game-riffs PR 161 changes the game's two "colour" strings
+3. **Spelling fix.** game-riffs PR 161 changes the game's three "colour" strings
    to "color". After it merges: `tools/sync-from-game-riffs.sh <merge commit>`,
    re-export, retake the How to play screenshots (`04-*`).
 4. Optional: tell the Minimal Primitives release session which game commit

@@ -1,1 +1,1 @@
-slant,gokigen naname,logic,puzzle,diagonal,lines,nikoli,grid,brain,minimal,offline
+slant,gokigen naname,logic,puzzle,diagonal,lines,grid,brain,minimal,offline

@@ -57,7 +57,7 @@ if ! grep -q "http-equiv=\"Content-Security-Policy\" content=\"default-src 'self
     red "  ✘ www/index.html lacks the bundle-only Content-Security-Policy"; exit 1
 fi
 if grep -Eq '<(script|img|iframe|source|audio|video)\b[^>]*\bsrc="(https?:)?//' www/index.html \
-   || grep -E '<link\b[^>]*\bhref="(https?:)?//' www/index.html | grep -vq 'rel="canonical"'; then
+   || grep -E '<link\b[^>]*\bhref="(https?:)?//' www/index.html | grep -v 'rel="canonical"' | grep -q .; then
     red "  ✘ www/index.html loads something from another host"; exit 1
 fi
 for gone in pwa.js sw.js manifest.webmanifest scores.js score-clock.js; do
@@ -76,6 +76,11 @@ if ! grep -q "new URL('https://lukesteuber.com/games/slant/')" www/slant.js; the
     red "  ✘ shared puzzle links no longer point at the web game"; exit 1
 fi
 green "  ✓ no analytics, scores or service worker, bundle-only CSP, nothing remote"
+# British spellings in player-facing text are fixed in game-riffs, not here; warn
+# until the game is clean (game-riffs PR 161 fixes the three "colour" strings).
+if grep -Eqi "\bcolour" www/index.html www/slant.js; then
+    gold "  ! www/ still says \"colour\" (game source); sync after game-riffs PR 161"
+fi
 
 # 3. Capacitor can stage the iOS project.
 gold "[3/$TOTAL] npx cap sync ios…"

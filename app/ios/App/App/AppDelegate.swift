@@ -111,8 +111,15 @@ final class PictureSaver: NSObject, WKScriptMessageHandler {
         let dir = FileManager.default.temporaryDirectory.appendingPathComponent("pictures", isDirectory: true)
         let url = dir.appendingPathComponent(Self.fileName(body["name"] as? String))
         do {
-            try? FileManager.default.removeItem(at: dir)
-            try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+            // Keep recent pictures: an app the player shared to may read its file
+            // later. Ones older than an hour go.
+            let files = FileManager.default
+            let cutoff = Date().addingTimeInterval(-3600)
+            for old in (try? files.contentsOfDirectory(at: dir, includingPropertiesForKeys: [.contentModificationDateKey])) ?? [] {
+                let changed = (try? old.resourceValues(forKeys: [.contentModificationDateKey]))?.contentModificationDate ?? .distantPast
+                if changed < cutoff { try? files.removeItem(at: old) }
+            }
+            try files.createDirectory(at: dir, withIntermediateDirectories: true)
             try data.write(to: url, options: .atomic)
         } catch {
             NSLog("PictureSaver: %@", error.localizedDescription)
@@ -151,7 +158,7 @@ final class WeakScriptHandler: NSObject, WKScriptMessageHandler {
 //
 // `xcrun simctl launch <device> com.oneimpossiblethingatatime.slant -SlantShot <scene>`
 // opens the game on a fixed screen with no taps, for store screenshots on screens
-// simctl cannot tap (the iPhone Duo's outer screen while folded). `scripts/capture-duo.sh`
+// simctl cannot tap (the iPhone Duo's outer screen while folded). `scripts/capture-shots.sh`
 // drives it. Scenes:
 //   progress  board 42 (8 x 8), the first 40 logical moves drawn, light
 //   solved    board 41 (7 x 7) solved, in color, light

@@ -8,9 +8,10 @@ import Capacitor
 // scene(_:willConnectTo:options:) runs; nothing here creates a window.
 //
 // Under scenes, links that open the app arrive here instead of the AppDelegate.
-// Capacitor 8.3 has no SceneDelegateProxy (8.5 adds one), so they go to
-// ApplicationDelegateProxy, as the AppDelegate did. Notan registers no URL
-// scheme or universal link today; this keeps the path working if it ever does.
+// They are forwarded to Capacitor's ApplicationDelegateProxy, as the AppDelegate
+// did (this file came from Notan's shell, written against Capacitor 8.3). Slant
+// registers no URL scheme or universal link today; this keeps the path working
+// if it ever does.
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?

@@ -2,7 +2,7 @@ Draw one diagonal in every square. Each number counts the lines that touch its c
 
 Slant is a quiet logic puzzle, also known as Gokigen Naname. Work it out from the numbers, square by square, until the whole board settles.
 
-WHAT'S IN IT
+What's in it
 
 • 54 boards, from 2×2 lead-ins to 9×9, in three stages: Intro, Developing and Advanced. Each one can be solved step by step without guessing.
 • Four one-idea opening boards teach the rules before the first numbered board.
@@ -11,15 +11,15 @@ WHAT'S IN IT
 • A hint for when you are stuck. It outlines a diagonal and the numbers or path that force it; tap again to place it.
 • Two modes. Standard colors each section when it is right. Hard colors a section when its numbers match, and adds a lock tool for diagonals you are sure of.
 
-HOW IT PLAYS
+How it plays
 
 Tap a square to turn or clear its diagonal. Drag to paint a line of them. Undo takes back the last move. Choose Slash or Backslash in Settings to draw one direction only. A keyboard works too.
 
-WHEN YOU FINISH
+When you finish
 
 Download makes a picture of the colored board to save or share. Copy link sends the same puzzle to someone else; they can play it in a browser.
 
-QUIET BY DESIGN
+Quiet by design
 
 • Entirely offline. No account, no ads, no analytics, no tracking.
 • Light and dark themes, or follow the system. Reduced motion. Enlarge the board and pan for bigger squares.
