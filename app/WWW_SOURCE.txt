@@ -1,0 +1,30 @@
+# Vendored payload provenance. Do not hand-edit www/.
+#
+# Regenerate from app/ at the source commit below:
+#   python3 scripts/export-www.py
+# scripts/smoke.sh verifies these checksums; scripts/export-www.py lists
+# the three deliberate differences from the web game.
+
+source_repo     https://github.com/lukeslp/notan
+source_commit   547b32a84367b10831edcacee8787a0f93a8dc05
+upstream        https://github.com/lukeslp/game-riffs notan/ at d6db95d
+
+d4a1181bf44be5cf7ba114bd47618295f3ea8d7b6f69ebda4ff15e4c89681fb3  access.js
+4bd9ebdcfc5bc5c3107a43fbc0b8dc72bf38270d836064f48aade89bff556abf  apple-touch-icon.png
+443402b94535a6b6971c6d302bd70bcfff073152c4616f0939290d3158374a6c  bridge-client.js
+f4e473a77f734ce37510095cda2322bd0f8bcefd07d8febe9967a082a25f66f3  controls.css
+1989cb185624bcc9f0791fa400dc1af3604d7ecf0e6ecb6686a9aff010eb55e2  controls.js
+ac4c1715c2ec4b3f76907842b1a006b800baa0d044c561e125ac963e9b82991c  engine.js
+146625776b28268e0d576f74e89000bd9b9ddf76677f9b6d4f8a81ec072872a5  favicon.svg
+01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22  fonts/IBMPlexMono-500.woff2
+db71f8a28ad8501544fb4e7668e3c6d0b731760b6f20de3525ebaeba597f1922  fonts/IBMPlexSans-400.woff2
+7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da  fonts/OFL.txt
+3e6d8c7950a5ce965d5a8d2dbdfa3d843e15c0f429de30b830808fca7ea3cc9f  index.html
+9a645179538a883150b68f88da110c51441dbaef078de24db65406400a178adc  levels.js
+4434a7162ccc2615d6e9cfcfcabbfec0f3b31f3c982d9c92c4a16f96fba355b6  notan.css
+3acf2d622491a9feab21049000faab9acfacbb5b79857e30dc3d5464b4e96dd4  notan.js
+ada7cb5c734859951df16f1b475513f3a77ed0293b12c522a96073970011eddf  og.png
+94f8a0feee32c574bc54c272915702f5e5e0febdc3253d74d13c6b28521d054e  paint-input.js
+d62381d9918ab9db4b2a018dc885ff8d718844034b01332624e596d7adae436d  plus-levels.js
+e46ea50bced8d20177e8019792d93440da89ffdad5c7dbf12a023bcbda72d90b  practice.js
+cef40838c07e0e2072a1fcdb3a0a789f41a3864ce2f82d2455704786d5434ff5  privacy.html

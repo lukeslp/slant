@@ -1,0 +1,22 @@
+Fill the squares each row and column asks for, and a small picture appears.
+
+Notan is a nonogram in black and white. The numbers beside each row and above each column give the runs of filled squares in that line. Work them out line by line, and the picture shows itself when the last square is right.
+
+WHAT'S IN IT
+
+• 53 levels, from a 2×2 square up to 15×15. Every level has exactly one solution, and you can reach it line by line without guessing.
+• New Game+: 20 harder, asymmetric pictures that unlock after level 53.
+• Quick play: random boards at 5, 8, 10, 12 or 15 squares a side. Each one has a single solution you can find line by line.
+• How to play walks through a few small examples; the first levels teach the rest.
+• A hint for when you are stuck. It rings one wrong square, or a square you can work out and the numbers that settle it.
+• Hold a row's or column's numbers to lock a finished line.
+
+HOW IT PLAYS
+
+Tap to fill or clear a square. Drag to fill a line. Double-tap or hold to mark a square empty. Undo takes back the last move.
+
+QUIET BY DESIGN
+
+• Entirely offline. No account, no ads, no analytics, no tracking.
+• Light and dark themes, or follow the system. Zoom makes the numbers larger.
+• Progress stays on your device. Close the app mid-puzzle and pick up where you left off.

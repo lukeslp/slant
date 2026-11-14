@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The only files the app ever offers other apps: puzzle pictures the player
+     chose to save or share, written to cache/shared/ just before the share sheet
+     opens. MainActivity.savePicture writes them. -->
+<paths>
+    <cache-path name="shared" path="shared/" />
+</paths>

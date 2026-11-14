@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+
+// Release signing comes from the environment, never from a file in Git.
+// Without all four variables a release build is simply unsigned.
+def signingValues = [
+    'SLANT_ANDROID_STORE_FILE',
+    'SLANT_ANDROID_STORE_PASSWORD',
+    'SLANT_ANDROID_KEY_ALIAS',
+    'SLANT_ANDROID_KEY_PASSWORD',
+].collectEntries { [(it): System.getenv(it)] }
+def hasReleaseSigning = signingValues.values().every { it != null && !it.trim().isEmpty() }
+
+android {
+    namespace = "com.oneimpossiblethingatatime.slant"
+    compileSdk = rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.oneimpossiblethingatatime.slant"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        // Same id as iOS; permanent after the first store upload.
+        // Keep anything keyed to it reading ${applicationId}, never a literal.
+        versionCode 2
+        versionName "1.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    signingConfigs {
+        if (hasReleaseSigning) {
+            release {
+                storeFile file(signingValues['SLANT_ANDROID_STORE_FILE'])
+                storePassword signingValues['SLANT_ANDROID_STORE_PASSWORD']
+                keyAlias signingValues['SLANT_ANDROID_KEY_ALIAS']
+                keyPassword signingValues['SLANT_ANDROID_KEY_PASSWORD']
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (hasReleaseSigning) signingConfig signingConfigs.release
+        }
+    }
+}
+
+tasks.register('printApplicationId') {
+    doLast { println android.defaultConfig.applicationId }
+}
+
+tasks.register('printVersion') {
+    doLast { println android.defaultConfig.versionName + ' (' + android.defaultConfig.versionCode + ')' }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
+

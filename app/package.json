@@ -1,0 +1,25 @@
+{
+  "name": "slant-app",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "www": "python3 scripts/export-www.py",
+    "cap:sync:ios": "npx cap sync ios",
+    "cap:sync:android": "npx cap sync android",
+    "cap:open:ios": "npx cap open ios",
+    "cap:open:android": "npx cap open android",
+    "android:build:debug": "scripts/android-build.sh assembleDebug",
+    "android:bundle:release": "scripts/android-build.sh bundleRelease",
+    "android:apk:release": "scripts/android-build.sh assembleRelease",
+    "icons:generate": "scripts/generate-icons.sh",
+    "smoke": "scripts/smoke.sh"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.5.3",
+    "@capacitor/cli": "8.5.3",
+    "@capacitor/core": "8.5.3",
+    "@capacitor/ios": "8.5.3"
+  },
+  "packageManager": "pnpm@10.18.0"
+}
