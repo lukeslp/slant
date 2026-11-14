@@ -16,7 +16,7 @@ Minimal Primitives 0.5.0.
 
 | Thing | Value |
 |---|---|
-| Package / bundle id | `com.oneimpossiblethingatatime.slant` (proposed; no App ID registered yet; team `596T7J7FB6`) |
+| Package / bundle id | `com.oneimpossiblethingatatime.slant` (confirmed 2026-11-14; the App ID is registered by the sign script's first archive; team `596T7J7FB6`) |
 | Version | 1.0.0, build / versionCode 1 |
 | Android keystore | `~/Library/Application Support/AndroidReleaseToolkit/keystores/slant-release.jks` |
 | Key alias | `slant-release` |

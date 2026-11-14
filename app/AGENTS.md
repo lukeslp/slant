@@ -2,9 +2,9 @@
 
 Capacitor shell around the Slant puzzle for iOS and Android, modeled on
 Notan's `app/` (lukeslp/notan), itself modeled on Hexsweeper's. Read
-`README.md` first: it records the proposed id
-`com.oneimpossiblethingatatime.slant` (not confirmed; permanent once a store
-has it), the owner's decisions, and the six changes the exporter makes.
+`README.md` first: it records the id
+`com.oneimpossiblethingatatime.slant` (confirmed 2026-11-14; permanent once a
+store has it), the owner's decisions, and the six changes the exporter makes.
 
 ## The one rule
 

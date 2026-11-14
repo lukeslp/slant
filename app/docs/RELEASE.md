@@ -11,7 +11,7 @@ signing steps run from Luke's own Terminal.
 | App Store name | `Slant: Line Puzzle` (fallback `Slant Logic Puzzle`) |
 | Google Play title | `Slant: Line Puzzle` |
 | Home-screen name | `Slant` (`CFBundleDisplayName` / `app_name`) |
-| iOS bundle id | `com.oneimpossiblethingatatime.slant` (**proposed**; permanent after first upload) |
+| iOS bundle id | `com.oneimpossiblethingatatime.slant` (confirmed by Luke 2026-11-14; permanent after first upload) |
 | Android application id | same |
 | Apple team | `596T7J7FB6` |
 | Android key | toolkit profile `slant`, alias `slant-release` (toolkit PR 25, merged `ec3d98c`) |
@@ -19,10 +19,8 @@ signing steps run from Luke's own Terminal.
 
 ## 0. Before anything
 
-1. **Luke confirms the id.** Then change the `PROPOSED` comment in
-   `capacitor.config.js` to "Confirmed by the owner <date>" and update the
-   README table. The sign script refuses to run until then, because an
-   automatic-signing archive registers the App ID with Apple.
+1. ~~Luke confirms the id.~~ Done 2026-11-14 ("Yes, use it"). The sign
+   script's PROPOSED gate now passes.
 2. **Privacy page.** `app-store/privacy.html` has to be live before either
    store accepts the listing. Proposed home:
    `https://lukesteuber.com/games/slant/privacy.html` (add it to game-riffs

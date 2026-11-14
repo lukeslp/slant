@@ -15,7 +15,7 @@ left off. Settings and How to play are the game's own sheets.
 
 | Decision | Proposed | Why |
 |---|---|---|
-| iOS bundle id and Android application id | **`com.oneimpossiblethingatatime.slant`** (one id for both). **Not confirmed yet** | Slant has no domain of its own; this follows Minimal Primitives' `com.oneimpossiblethingatatime.minimalprimitives`. **Permanent after the first upload to either store.** To change it: `capacitor.config.js`, `android/app/build.gradle` (`namespace`, `applicationId`, plus the Java package folder), `res/values/strings.xml`, and `PRODUCT_BUNDLE_IDENTIFIER` in the Xcode project |
+| iOS bundle id and Android application id | **`com.oneimpossiblethingatatime.slant`** (one id for both). Confirmed by Luke 2026-11-14 | Slant has no domain of its own; this follows Minimal Primitives' `com.oneimpossiblethingatatime.minimalprimitives`. **Permanent after the first upload to either store.** To change it: `capacitor.config.js`, `android/app/build.gradle` (`namespace`, `applicationId`, plus the Java package folder), `res/values/strings.xml`, and `PRODUCT_BUNDLE_IDENTIFIER` in the Xcode project |
 | App Store name | `Slant: Line Puzzle` (fallback `Slant Logic Puzzle`) | "Slant" alone is almost certainly taken (Simon Tatham's collection and several Gokigen Naname apps; "Aurora Slant: Diagonal Logic" uses "Diagonal Logic"). The home-screen name stays `Slant` (`CFBundleDisplayName`) |
 | Google Play title | `Slant: Line Puzzle` | Play titles need not be unique; the suffix helps search |
 | Android backup | Off | As Notan and Hexsweeper |
@@ -29,7 +29,7 @@ left off. Settings and How to play are the game's own sheets.
 | Product / display name | **Slant** |
 | Repository | `lukeslp/slant` (private), this folder (`app/`) |
 | Game source | `../slant/`, synced from game-riffs `slant/` by `../tools/sync-from-game-riffs.sh` |
-| iOS bundle id / Android application id | `com.oneimpossiblethingatatime.slant` (proposed) |
+| iOS bundle id / Android application id | `com.oneimpossiblethingatatime.slant` (confirmed 2026-11-14) |
 | Apple team | `596T7J7FB6`, automatic signing |
 | Android signing | android-release-toolkit profile `slant` (`SLANT_ANDROID_*`) |
 | Store records | none yet |
