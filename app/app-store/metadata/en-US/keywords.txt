@@ -1,1 +1,1 @@
-nonogram,picross,griddlers,hanjie,logic,puzzle,picture,pixel,black and white,minimal,offline
+slant,gokigen naname,logic,puzzle,diagonal,lines,nikoli,grid,brain,minimal,offline

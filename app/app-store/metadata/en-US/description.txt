@@ -1,22 +1,27 @@
-Fill the squares each row and column asks for, and a small picture appears.
+Draw one diagonal in every square. Each number counts the lines that touch its corner, and the lines may never close a loop. Get it right and the board fills with color.
 
-Notan is a nonogram in black and white. The numbers beside each row and above each column give the runs of filled squares in that line. Work them out line by line, and the picture shows itself when the last square is right.
+Slant is a quiet logic puzzle, also known as Gokigen Naname. Work it out from the numbers, square by square, until the whole board settles.
 
 WHAT'S IN IT
 
-• 53 levels, from a 2×2 square up to 15×15. Every level has exactly one solution, and you can reach it line by line without guessing.
-• New Game+: 20 harder, asymmetric pictures that unlock after level 53.
-• Quick play: random boards at 5, 8, 10, 12 or 15 squares a side. Each one has a single solution you can find line by line.
-• How to play walks through a few small examples; the first levels teach the rest.
-• A hint for when you are stuck. It rings one wrong square, or a square you can work out and the numbers that settle it.
-• Hold a row's or column's numbers to lock a finished line.
+• 54 boards, from 2×2 lead-ins to 9×9, in three stages: Intro, Developing and Advanced. Each one can be solved step by step without guessing.
+• Four one-idea opening boards teach the rules before the first numbered board.
+• New Game+: after all 54, generated boards at Easy, Normal or Hard, each with a seed you can reopen or send to a friend.
+• Free draw: a blank board up to 16×16 with no numbers. Every closed section fills with color, so you can just draw.
+• A hint for when you are stuck. It outlines a diagonal and the numbers or path that force it; tap again to place it.
+• Two modes. Standard colors each section when it is right. Hard colors a section when its numbers match, and adds a lock tool for diagonals you are sure of.
 
 HOW IT PLAYS
 
-Tap to fill or clear a square. Drag to fill a line. Double-tap or hold to mark a square empty. Undo takes back the last move.
+Tap a square to turn or clear its diagonal. Drag to paint a line of them. Undo takes back the last move. Choose Slash or Backslash in Settings to draw one direction only. A keyboard works too.
+
+WHEN YOU FINISH
+
+Download makes a picture of the colored board to save or share. Copy link sends the same puzzle to someone else; they can play it in a browser.
 
 QUIET BY DESIGN
 
 • Entirely offline. No account, no ads, no analytics, no tracking.
-• Light and dark themes, or follow the system. Zoom makes the numbers larger.
-• Progress stays on your device. Close the app mid-puzzle and pick up where you left off.
+• Light and dark themes, or follow the system. Reduced motion. Enlarge the board and pan for bigger squares.
+• One-switch scanning in Settings > Access.
+• Progress stays on your device. Close the app mid-board and pick up where you left off.

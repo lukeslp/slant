@@ -1,1 +1,1 @@
-Black-and-white picture logic
+Diagonals, numbers, no loops
