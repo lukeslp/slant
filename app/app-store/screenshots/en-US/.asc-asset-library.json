@@ -1,0 +1,52 @@
+{
+  "6834941283": {
+    "4a98595afd89ec8dff715a49a48b8ee551bd7b66614d4facd57ea62bee0d966b": {
+      "assetId": "91c00019-764e-8d63-8039-8c6bc5779b8b",
+      "fileName": "03-free-draw-dark-ipad.png",
+      "recorded": "2026-11-14T14:39:44-0800",
+      "specId": "1751a63a-af79-5c7f-a2f2-41140bf28f9e"
+    },
+    "63b7f34616e86412014af285da90f7c2af39401c7274c41396727b08a3b75c86": {
+      "assetId": "d0400019-764e-8d63-802a-236ce11ea22e",
+      "fileName": "02-solved.png",
+      "recorded": "2026-11-14T14:39:41-0800",
+      "specId": "bd402f1a-26ee-5b83-9dd7-972c60c43d47"
+    },
+    "7d8e9b72b4b46d39d6b7afbe6724371df97b65e1fe3126df916dab70db72a127": {
+      "assetId": "e5400019-764e-8d63-8030-e0164a6c0e52",
+      "fileName": "04-how-to-play-dark.png",
+      "recorded": "2026-11-14T14:39:50-0800",
+      "specId": "bd402f1a-26ee-5b83-9dd7-972c60c43d47"
+    },
+    "98d2253c15f6957e4db2032ac46d1b1309c6296426078b8ebb69906768ed4fc7": {
+      "assetId": "e6000019-764e-8d63-8031-c0651735ca0a",
+      "fileName": "02-solved-ipad.png",
+      "recorded": "2026-11-14T14:39:39-0800",
+      "specId": "1751a63a-af79-5c7f-a2f2-41140bf28f9e"
+    },
+    "a00dc0931e2f8e1a42ecacb8b5e626f6e8efea4b451b7b2b4c6743712139092b": {
+      "assetId": "eb000019-764e-8d63-8019-26e919fad081",
+      "fileName": "04-how-to-play-dark-ipad.png",
+      "recorded": "2026-11-14T14:39:48-0800",
+      "specId": "1751a63a-af79-5c7f-a2f2-41140bf28f9e"
+    },
+    "ac02c3589b1f49fd91f38f44b06f43afb2c2064fc0ac59d0e3f0c240293c004d": {
+      "assetId": "d9000019-764e-8d63-8028-e8f521ed059c",
+      "fileName": "01-in-progress-ipad.png",
+      "recorded": "2026-11-14T14:39:35-0800",
+      "specId": "1751a63a-af79-5c7f-a2f2-41140bf28f9e"
+    },
+    "b0ca352051b10607d65ed3c62a6d24839b768b6bfb80392f8fc690c41eae1519": {
+      "assetId": "e0400019-764e-8d63-8027-1b910cd7d6db",
+      "fileName": "01-in-progress.png",
+      "recorded": "2026-11-14T14:39:37-0800",
+      "specId": "bd402f1a-26ee-5b83-9dd7-972c60c43d47"
+    },
+    "fafa5072f4d0c93990d50c5be6092f7a24633494e158788c106a23bbe39c217a": {
+      "assetId": "90000019-764e-8d63-8003-557b7be6ed9d",
+      "fileName": "03-free-draw-dark.png",
+      "recorded": "2026-11-14T14:39:46-0800",
+      "specId": "bd402f1a-26ee-5b83-9dd7-972c60c43d47"
+    }
+  }
+}

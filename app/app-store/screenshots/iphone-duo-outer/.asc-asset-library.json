@@ -1,0 +1,28 @@
+{
+  "6834941283": {
+    "4f179d2bd91dc92363d5f37d98af63048bfc2826bdc1e4f614db28053e9b5b84": {
+      "assetId": "23000019-764e-8d63-802e-c51e65bb1dcd",
+      "fileName": "01-in-progress.png",
+      "recorded": "2026-11-14T14:40:07-0800",
+      "specId": "205e7ab6-a23a-4ee2-b327-0a99ec2a2520"
+    },
+    "69e5fe8ae7939529f85fccbd576dbeab7f989a6cb265aeee3d4c87656218ae5c": {
+      "assetId": "9ac00019-764e-8d63-8032-5c5c63917355",
+      "fileName": "03-free-draw-dark.png",
+      "recorded": "2026-11-14T14:40:11-0800",
+      "specId": "205e7ab6-a23a-4ee2-b327-0a99ec2a2520"
+    },
+    "9fa556493f784f158ed980ecd3b372a0561d9f0e28558c0fb411d97329b92506": {
+      "assetId": "0a000019-764e-8d63-8035-33c929e710e4",
+      "fileName": "04-how-to-play-dark.png",
+      "recorded": "2026-11-14T14:40:13-0800",
+      "specId": "205e7ab6-a23a-4ee2-b327-0a99ec2a2520"
+    },
+    "cc5451a18f816c01c198ec196e1ffd15bc170682e0b077192983b54714c35d7e": {
+      "assetId": "3b400019-764e-8d63-803f-6f723e23ca04",
+      "fileName": "02-solved.png",
+      "recorded": "2026-11-14T14:40:09-0800",
+      "specId": "205e7ab6-a23a-4ee2-b327-0a99ec2a2520"
+    }
+  }
+}
