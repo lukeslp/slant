@@ -21,13 +21,11 @@ signing steps run from Luke's own Terminal.
 
 1. ~~Luke confirms the id.~~ Done 2026-11-14 ("Yes, use it"). The sign
    script's PROPOSED gate now passes.
-2. **Privacy page.** `app-store/privacy.html` has to be live before either
-   store accepts the listing. Proposed home:
-   `https://lukesteuber.com/games/slant/privacy.html` (add it to game-riffs
-   `slant/`, or copy it onto Drummer). Luke's OK first.
-3. **Spelling fix.** game-riffs PR 161 changes the game's three "colour" strings
-   to "color". After it merges: `tools/sync-from-game-riffs.sh <merge commit>`,
-   re-export, retake the How to play screenshots (`04-*`).
+2. ~~Privacy page.~~ Live at `https://lukesteuber.com/games/slant/privacy.html`
+   since 2026-11-14 (game-riffs PR 164; web release `slant-privacy-ff6f321` on
+   Drummer, with `rollback.sh` beside it).
+3. ~~Spelling fix.~~ game-riffs PR 161 merged; the app is synced at ff6f321 and
+   the How to play screenshots were retaken.
 4. Optional: tell the Minimal Primitives release session which game commit
    this app ships, so the two stay in step.
 

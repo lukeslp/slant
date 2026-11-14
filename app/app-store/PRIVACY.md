@@ -37,7 +37,7 @@ What to enter in App Store Connect and the Google Play Console for Slant
 |---|---|
 | App Privacy: data collection | **Data Not Collected** |
 | Tracking | No |
-| Privacy policy URL | Proposed `https://lukesteuber.com/games/slant/privacy.html`. **Not live yet**: the page is `app-store/privacy.html`; publishing it (into game-riffs `slant/` or straight onto Drummer) waits for Luke's OK |
+| Privacy policy URL | `https://lukesteuber.com/games/slant/privacy.html` (live since 2026-11-14; source game-riffs `slant/privacy.html` (PR 164), also bundled as `www/privacy.html`; `app-store/privacy.html` is the same text) |
 | Export compliance | Uses no non-exempt encryption (`ITSAppUsesNonExemptEncryption` = NO is already in `Info.plist`) |
 | Age rating | Every content question **None** / **No**; Unrestricted Web Access **No** (links open Safari, there is no in-app browser); Social media (`ageRatingDeclarations.socialMedia`) **No**; Gambling, contests, user-generated content **No**. Expected result 4+ |
 | Category | Games → Puzzle (secondary: Games → Board, optional) |

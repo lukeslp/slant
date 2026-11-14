@@ -76,10 +76,9 @@ if ! grep -q "new URL('https://lukesteuber.com/games/slant/')" www/slant.js; the
     red "  ✘ shared puzzle links no longer point at the web game"; exit 1
 fi
 green "  ✓ no analytics, scores or service worker, bundle-only CSP, nothing remote"
-# British spellings in player-facing text are fixed in game-riffs, not here; warn
-# until the game is clean (game-riffs PR 161 fixes the three "colour" strings).
-if grep -Eqi "\bcolour" www/index.html www/slant.js; then
-    gold "  ! www/ still says \"colour\" (game source); sync after game-riffs PR 161"
+# Player-facing text is American English (fixed in game-riffs, then synced).
+if grep -Eqi "\bcolour" www/index.html www/slant.js www/privacy.html; then
+    red "  ✘ www/ says \"colour\": fix it in game-riffs slant/, sync, re-export"; exit 1
 fi
 
 # 3. Capacitor can stage the iOS project.
