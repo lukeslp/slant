@@ -1,0 +1,32 @@
+/* Slant app shell: iPhone Duo. The iOS shell's fold bridge (DuoBridge.swift +
+   duo-fold.js) sets data-duo-* and --duo-fold-* on <html>; no other device or
+   browser gets them, so nothing here applies anywhere else.
+
+   HIG rules for Duo: nothing you tap sits in the fold, every pose keeps every
+   control, and only what must move moves.
+   - Book (folded upright like a book, vertical fold): the board fills the
+     trailing page; the readout, Restart, feedback and toolbar move to the
+     leading page, and sheets open there too.
+   - Laptop (propped like a laptop, horizontal fold): the board stays on the
+     upper half; the toolbar and feedback are already at the bottom, on the half
+     resting on the table, and sheets open there.
+   Flat and closed: the game's own layout. */
+
+/* Book */
+html[data-duo-pose="book"] #board-shell{left:var(--duo-fold-right);right:12px;top:16px;bottom:16px}
+html[data-duo-pose="book"] .readout{left:calc(var(--duo-fold-left) / 2)}
+html[data-duo-pose="book"] #feedback{right:calc(100% - var(--duo-fold-left) + 16px)}
+html[data-duo-pose="book"] body .toolbar,
+html[data-duo-pose="book"] body[data-control-frame] .control-toolbar{
+  right:calc(100% - var(--duo-fold-left) + 8px)!important;
+  left:max(8px,env(safe-area-inset-left))!important;
+  top:auto!important;bottom:max(6px,env(safe-area-inset-bottom))!important;
+  width:auto!important;flex-direction:row!important;
+}
+html[data-duo-pose="book"] body[data-control-frame] .control-toolbar :is(.control-actions,.control-meta),
+html[data-duo-pose="book"] body .toolbar>div{flex-direction:row!important}
+html[data-duo-pose="book"] .sheet{right:calc(100% - var(--duo-fold-left));max-width:calc(var(--duo-fold-left) - 16px)}
+
+/* Laptop */
+html[data-duo-pose="laptop"] #board-shell{top:28px;bottom:calc(100% - var(--duo-fold-top) + 8px)}
+html[data-duo-pose="laptop"] .sheet{top:var(--duo-fold-bottom);max-height:calc(100% - var(--duo-fold-bottom) - 8px)}
