@@ -8,13 +8,13 @@
 source_repo     https://github.com/lukeslp/slant
 source_commit   fa17836be86e9926ef525d1f21408150f7e32fcd
 upstream        https://github.com/lukeslp/game-riffs slant/ at ff6f321
-native_commit   772ed341b31667fba2e256feb02bc830b74a89f8
+native_commit   73fcfa4a333fbf0f16023cb20ed0ea07ecbf7689
 
 d4a1181bf44be5cf7ba114bd47618295f3ea8d7b6f69ebda4ff15e4c89681fb3  access.js
 443402b94535a6b6971c6d302bd70bcfff073152c4616f0939290d3158374a6c  bridge-client.js
 f4e473a77f734ce37510095cda2322bd0f8bcefd07d8febe9967a082a25f66f3  controls.css
 e114e25abf11a1bda8654c2f379c9e4899776d68ea1318fc3c61f17e513b46e8  controls.js
-803d76b57b41c5efd90fb5105c63e2d1bfc039f067885b49d2b3f6d0af7d47de  duo-layout.css
+568594086cc04541ab44a347caf67869596b33a933eeae28cc180843d218c4e9  duo-layout.css
 7a585973834b6de4ab81d02eacfc4cc094b62b5022afb096eabc7dafc25e1bf8  engine.js
 a5c5f57860ad12cc18f8af349df5e74398f7c95f610e4e2ed5c7cf83f314495d  favicon.svg
 01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22  fonts/IBMPlexMono-500.woff2
