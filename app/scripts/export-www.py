@@ -26,8 +26,8 @@ shipping a half-applied payload:
    the web view's own origin (capacitor://localhost or https://localhost),
    which nobody else could open.
 6. Adds two files the shell owns, from app/native/, and links them from
-   index.html: duo-layout.css (iPhone Duo fold layout; inert without the iOS
-   fold bridge) and native.js (hands the Download button's picture to the
+   index.html: duo-layout.css (iPhone Duo; holds no rules now, the board spans
+   the hinge) and native.js (hands the Download button's picture to the
    system share sheet, since neither web view saves a blob download; inert in
    a browser).
 
