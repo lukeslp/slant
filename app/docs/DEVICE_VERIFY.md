@@ -55,13 +55,12 @@ test-download (48), test-capture (9): all pass. test-scores needs
 game-riffs' `bridges/leaderboard/server.py` and was not run; the app ships
 no scores.
 
-Duo layout: checked in Chromium with the `data-duo-*` attributes and a 40 px
-fold set by hand (book: board on the right page, toolbar and Settings on the
-left; laptop: board above the fold, toolbar below); no console errors, no
-off-device requests. **Not checked on the Duo simulator's inner screen**: it
-cannot be unfolded from the command line (Device Hub needs a click). Run
-`SLANT_DUO=book scripts/capture-shots.sh <duo udid> inner <dir>` after
-unfolding it by hand, or check on hardware.
+Duo layout (changed 2026-11-14): the book and laptop layouts were removed, so
+the board keeps the game's own layout in every pose and spans the hinge. Seen
+on the "Slant Duo 20261114" simulator's inner screen, unfolded by hand in
+Device Hub, in portrait and landscape on board 24: the board is centered and
+fills the screen, with the readout above and the toolbar below. The earlier
+split layouts had only been checked in Chromium with a hand-set fold.
 
 Not checked: physical devices, VoiceOver and TalkBack, a hardware keyboard,
 iOS Copy link and the iOS "Share" button (Web Share), Android API levels

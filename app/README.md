@@ -5,7 +5,7 @@ Native Capacitor shell for **Slant**, the diagonal-line logic puzzle at
 `../slant/` (synced from `slant/` in lukeslp/game-riffs); this folder wraps it
 for iPhone, iPad and Android as a sealed offline payload. It is Notan's shell
 (`app/` in lukeslp/notan, itself modeled on Hexsweeper's) folder for folder,
-plus an iPhone Duo layout and a share-sheet path for the Download button.
+plus the iPhone Duo fold bridge and a share-sheet path for the Download button.
 
 The app opens straight onto the board, exactly like the web game: the four
 one-idea opening boards on a first launch, otherwise wherever the saved game
@@ -92,10 +92,10 @@ ways, each asserted so a moved target fails the export:
 - **Share** copies the puzzle's lukesteuber.com link. Android's WebView has
   no Web Share, so the game's own fallback copies the link there.
 - **iPhone Duo.** `DuoBridge.swift` and `duo-fold.js` (snippets `d787f31`,
-  as in Minimal Primitives PR 27) give the page the fold. In book pose the
-  board fills the trailing page and the readout, toolbar and sheets move to
-  the leading page; in laptop pose the board stays above the fold and sheets
-  open on the lower half. Flat and closed use the game's own layout.
+  as in Minimal Primitives PR 27) give the page the fold, but the layout does
+  not use it: the board keeps the game's own layout in every pose and runs
+  across the hinge, because the puzzle should have the whole screen.
+  `native/duo-layout.css` is kept with no rules.
 - **Links** open in the system browser.
 
 The iOS shell uses the UIScene life cycle (`SceneDelegate.swift` and
