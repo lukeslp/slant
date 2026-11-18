@@ -15,7 +15,7 @@ signing steps run from Luke's own Terminal.
 | Android application id | same |
 | Apple team | `596T7J7FB6` |
 | Android key | toolkit profile `slant`, alias `slant-release` (toolkit PR 25, merged `ec3d98c`) |
-| Version | `1.0.0 (1)` on both platforms |
+| Version | `1.0.1 (2)` on both platforms (1.0.0 (1) is live) |
 
 ## 0. Before anything
 
@@ -125,3 +125,50 @@ button arrives with `record-download` once the APK is signed.
 F-Droid (the LocalType releases repository, owned batch) and the downloads
 site (`android-download-publish` skill) both take the signed APK; see
 [PUBLISH-AFTER-SIGNING.md](PUBLISH-AFTER-SIGNING.md).
+
+## 1.0.1 (2), prepared 2026-11-18: not signed, not uploaded
+
+Brings the app to the game the web and Minimal Primitives 0.5.11 run
+(game-riffs `4a9c688`; 1.0.0 shipped `ff6f321`), plus the Duo hinge layout
+merged in slant#2 after 1.0.0 was built.
+
+What players get, from game-riffs `ff6f321..4a9c688` (`slant/`):
+Settings grouped under headings (Mode is now Rules, its Hard is Classic; the
+shared Minimal Settings standard); a second Hint press fixes a wrong
+diagonal; after the solve, Next is the round continue disc Weaves uses,
+shown at once and placed by the painted board; Next past the last board
+goes to the first unfinished one; the end of each campaign shows on screen.
+On the iPhone Duo the board spans the hinge in every pose.
+
+Checked on napoleon 2026-11-18, side by side with the web copy and Minimal
+0.5.11's `build/html` (Playwright at 390×844, light and dark, Chromium and
+WebKit): the Settings sheet lists the same headings, rows and footer in all
+three except Minimal's own (Collection scores, no Share, All games to its
+library); the continue disc is the same 64 px disc at the same spot; Help is
+the same; no page errors. `pnpm smoke` green.
+
+Simulator, 2026-11-18 (napoleon, Xcode 27.2, iOS 27.2 iPhone Duo sim
+"Slant Duo 20261114", folded outer screen): Debug build, `scripts/capture-shots.sh … outer`
+scenes solved, in progress and how to play all accepted; the solved scene shows
+the new continue disc. `simctl launch --console-pty` printed `WebView
+loaded`, no UIScene line and no errors, and the page logged its Duo fold bridge as wired (`SlantCheck duoFold=true duoHandler=true`). The other outer shots are
+pixel-identical to 1.0's; `iphone-duo-outer/02-solved.png` was replaced
+with the new disc. On the folded screen the toolbar stops short of the
+trailing edge: that is iOS's status-bar column beside the camera, and 1.0
+did the same. External links: no `allowNavigation` is set, so Capacitor
+opens any outside host in Safari (iOS `WebViewDelegationHandler`) or the
+browser (Android `Bridge.launchIntent`, `ACTION_VIEW`); read in the
+Capacitor 8.5.3 source, not tapped. **Not run:** the unfolded Duo poses
+(folding needs a click in Device Hub), an Android emulator (the Android
+WebView is the Chromium checked above), a phone.
+
+What's New, **draft for Luke's approval** (then into
+`app-store/metadata/en-US/release_notes.txt` and the Play release notes):
+
+> Settings are grouped under headings, and Mode is now called Rules. Press
+> Hint twice to fix a wrong diagonal. After a solve, the arrow takes you to
+> the next board, and the board fills the whole screen on iPhone Duo.
+
+Still owed before signing: a sign script pinned to the merged commit (copy
+`~/workspace/play-builds-20261112/sign/slant-1.0.0-1.sh`), then the unfolded Duo
+poses and a phone run.

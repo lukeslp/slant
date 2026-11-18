@@ -2,7 +2,7 @@
    It precaches the runtime files below and answers them cache-first. VERSION is a hash of
    those files, so a release that changes any of them installs a new cache and drops the old. */
 'use strict';
-const VERSION = '533b426bcdc4';
+const VERSION = '577523ff67b4';
 const FILES = [
   "engine.js",
   "favicon.svg",

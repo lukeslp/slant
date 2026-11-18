@@ -19,8 +19,8 @@ left off. Settings and How to play are the game's own sheets.
 | App Store name | `Slant: Line Puzzle` (fallback `Slant Logic Puzzle`) | "Slant" alone is almost certainly taken (Simon Tatham's collection and several Gokigen Naname apps; "Aurora Slant: Diagonal Logic" uses "Diagonal Logic"). The home-screen name stays `Slant` (`CFBundleDisplayName`) |
 | Google Play title | `Slant: Line Puzzle` | Play titles need not be unique; the suffix helps search |
 | Android backup | Off | As Notan and Hexsweeper |
-| Version | 1.0.0, build 1 / versionCode 1 | Fresh records on both stores |
-| Game commit | game-riffs `7fb1780` | Has "color arrives at the solve" (`13e94ad`) and the Standard fill fix (`cf05b95`). Minimal Primitives pins Slant at `1e8d92e`, before both |
+| Version | 1.0.1, build 2 / versionCode 2 | 1.0.0 (1) is live; 1.0.1 is the first update |
+| Game commit | game-riffs `4a9c688` | The same commit Minimal Primitives 0.5.11 pins and the web runs, so Settings, Hint and the continue disc after the solve match everywhere. The exporter's six changes are the only differences |
 
 ## The names
 
