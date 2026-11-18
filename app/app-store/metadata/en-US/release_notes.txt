@@ -1,1 +1,1 @@
-First release.
+Settings are grouped under headings, and Mode is now called Rules. Press Hint twice to fix a wrong diagonal. After a solve, the arrow takes you to the next board, and the board fills the whole screen on iPhone Duo.
