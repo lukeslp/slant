@@ -11,9 +11,10 @@ Android app.
 | `tools/sync-from-game-riffs.sh` | Copies `slant/` from a game-riffs commit and commits it as `Sync slant/ from game-riffs <sha>` |
 | `app/` | The native app: a Capacitor shell around the game, for iOS and Android. Start with [app/README.md](app/README.md) |
 
-The game is synced at game-riffs `7fb1780` (November 14, 2026). Until then
-this repository was a one-commit snapshot from game-riffs `7d12e79`
-(October 11, 2026).
+The game is synced at game-riffs `4a9c688` (November 18, 2026), the same
+commit Minimal Primitives 0.5.11 and the web release run. Earlier syncs:
+`ff6f321` and `7fb1780` (November 14); before that this repository was a
+one-commit snapshot from game-riffs `7d12e79` (October 11, 2026).
 
 Open `slant/index.html` through any local static server to play the web
 version. Its tests are the `test-*.cjs` files in `slant/`; the app's checks
