@@ -162,13 +162,27 @@ Capacitor 8.5.3 source, not tapped. **Not run:** the unfolded Duo poses
 (folding needs a click in Device Hub), an Android emulator (the Android
 WebView is the Chromium checked above), a phone.
 
-What's New, **draft for Luke's approval** (then into
-`app-store/metadata/en-US/release_notes.txt` and the Play release notes):
+What's New, **approved by Luke 2026-11-18**, in
+`app-store/metadata/en-US/release_notes.txt` and
+`app-store/google-play/en-US/release_notes.txt`:
 
 > Settings are grouped under headings, and Mode is now called Rules. Press
 > Hint twice to fix a wrong diagonal. After a solve, the arrow takes you to
 > the next board, and the board fills the whole screen on iPhone Duo.
 
-Still owed before signing: a sign script pinned to the merged commit (copy
-`~/workspace/play-builds-20261112/sign/slant-1.0.0-1.sh`), then the unfolded Duo
-poses and a phone run.
+Store screenshots retaken 2026-11-18 from Debug builds of the merged code
+with `scripts/capture-shots.sh` on new simulators "Store iPhone 6.9
+20261118" (iPhone 17 Pro Max) and "Store iPad 13 20261118" (iPad Pro 13"
+M5), iOS 27.2: only `02-solved.png` and `02-solved-ipad.png` changed (the
+continue disc); the in-progress, free-draw and how-to-play shots are
+pixel-identical to 1.0.0's.
+
+Sign script: `~/workspace/release-1.0.1-20261118/sign/slant-1.0.1-2.sh` (run in Terminal.app on
+napoleon). It builds from a clean clone at the main commit that merges
+these store files, and refuses unless every build input under `app/`
+(all but docs, store copy and capture scripts) matches the 1.0.1 merge
+`6698f44`. It signs Android with the existing release key, stages the AAB
+and notes in `~/workspace/play-uploads/to-upload/`, then archives, checks,
+validates and uploads the iOS build to App Store Connect. Nothing is
+attached to a version or submitted. The App Store screenshots above go up
+with the 1.0.1 version, once its build is processed.
