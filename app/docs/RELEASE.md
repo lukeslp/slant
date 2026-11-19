@@ -44,8 +44,8 @@ Luke's go for all four channels: "Yes, all four".
 |---|---|
 | App Store | Build 1 uploaded (altool), processed VALID and attached to version **1.0.0**. **Submitted for review 2026-11-14 evening (Luke: "let's submit"), Waiting for Review**, after a casual-voice pass over the store copy. Free in all 175 territories; App Privacy "Data Not Collected" published; content rights, export compliance (no non-exempt encryption), age rating, review contact and notes set. |
 | Google Play | Internal testing: release 1 (1.0.0) **available to internal testers** (email list luke-only) since 15:16 PST. Store listing (casual copy, icon, feature graphic, 4 phone shots, assets not labeled as generated), category Game > Puzzle, contact email and website, and every App content form (privacy policy, sign-in none, no ads, not a government app, no financial or health features, no advertising ID, target 13+, Data safety "no data collected", content rating: ESRB Everyone / ACB General / ClassInd All ages) were sent for review on 2026-11-14 (~16:45 PST) with a **closed test (Closed testing - Alpha)**: release 1 (1.0.0), notes "First release.", all 177 countries plus rest of world, testers on the email lists coolhand-group, luke-only, what-color and wildcard, feedback to Luke's Gmail. Publishing overview shows 16 changes **in review** (managed publishing off, so it goes live when approved). The only release warning: no deobfuscation file (R8 is off) |
-| Direct download | https://dr.eamer.dev/downloads/android/slant/slant-1.0.0-1-244d1fa3.apk (SHA-256 `244d1fa3…63ab`), page https://lukesteuber.com/downloads/apps/slant/ (downloads-site `c6ec008`; toolkit PR 28) |
-| F-Droid (LocalType releases) | Slant 1.0.0 (1) in the index (target `20261114-slant-1.0.0-1-244d1fa3`, downloads-site `942e2a3`; keyboard PR 281) |
+| Direct download | 1.0.1 (2) since 2026-11-19 (see its receipts below); 1.0.0 was https://dr.eamer.dev/downloads/android/slant/slant-1.0.0-1-244d1fa3.apk (SHA-256 `244d1fa3…63ab`), page https://lukesteuber.com/downloads/apps/slant/ (downloads-site `c6ec008`; toolkit PR 28) |
+| F-Droid (LocalType releases) | 1.0.1 (2) added 2026-11-19 (receipts below); Slant 1.0.0 (1) in the index (target `20261114-slant-1.0.0-1-244d1fa3`, downloads-site `942e2a3`; keyboard PR 281) |
 
 ## 1. Sign and build (Terminal.app on napoleon)
 
@@ -126,7 +126,7 @@ F-Droid (the LocalType releases repository, owned batch) and the downloads
 site (`android-download-publish` skill) both take the signed APK; see
 [PUBLISH-AFTER-SIGNING.md](PUBLISH-AFTER-SIGNING.md).
 
-## 1.0.1 (2), prepared 2026-11-18: not signed, not uploaded
+## 1.0.1 (2), prepared 2026-11-18, signed and published 2026-11-19
 
 Brings the app to the game the web and Minimal Primitives 0.5.11 run
 (game-riffs `4a9c688`; 1.0.0 shipped `ff6f321`), plus the Duo hinge layout
@@ -186,3 +186,13 @@ and notes in `~/workspace/play-uploads/to-upload/`, then archives, checks,
 validates and uploads the iOS build to App Store Connect. Nothing is
 attached to a version or submitted. The App Store screenshots above go up
 with the 1.0.1 version, once its build is processed.
+
+### Receipts, 2026-11-19
+
+- **Signed** by Luke (`~/workspace/release-1.0.1-20261118/sign/slant-1.0.1-2.log`), from main `45c04f4` (build inputs `6698f44`). Signer `d9c77183…8091f9` on APK and AAB; `jarsigner -verify` passes on the staged AAB.
+  - APK `slant-1.0.1-2-b470087f.apk` SHA-256 `b470087fd33398512b2078e7346da6ea0d9bb42c5aad902d156c9e7978d0cf59`; AAB SHA-256 `524430536b913f3c8e6ee64eb70926970807b64e7b88e01969e491938762e6a2`; IPA SHA-256 `65f57e253cb925a4697e3129c7322de33c9ef7f4fb382166b68ff066d5286844`. Files: `~/workspace/release-1.0.1-20261118/out/slant-1.0.1-2/`.
+- **TestFlight**: build 2 validated and uploaded about 00:01 PT; App Store Connect read it `VALID`, internal `IN_BETA_TESTING` (the internal group gets every build). No 1.0.1 App Store version yet: creating it, attaching build 2, the What's New and the new screenshots, and any submission wait on Luke.
+- **Google Play**: `~/workspace/play-uploads/to-upload/Slant-1.0.1-2.aab` with its `.notes.txt` (the approved What's New), row in that folder's README. Not uploaded; Luke drags it in.
+- **Direct download**: `https://dr.eamer.dev/downloads/android/slant/slant-1.0.1-2-b470087f.apk`, hash checked over HTTPS; the page on dr.eamer.dev and lukesteuber.com links it. downloads-site `080de4c` (with the other app's 1.0.1), backup `~/backups/publish-downloads-20261119T084157Z` on Drummer; `audit-catalog --live-registry` exit 0; registry row android-release-toolkit PR 50, merged `d2560e1`.
+- **Hosted F-Droid**: target `20261119-slant-notan-1.0.1-b470087f` (downloads-site `f0196a3`) on top of `20261119-minimal-primitives-0.5.12-7ff2cc89`; 25 packages, 52 → 54 versions, only Slant 1.0.1 and Notan 1.0.1 added. Galactus workspace adopted (index `b449ea40…`). Batch `releases-20261119b.json`, localtype-keyboard PR 334, merged `a3911ed`. Scripts and logs: `~/workspace/release-1.0.1-20261118/publish/`.
+- **Still not run**: the unfolded Duo poses, a phone run of the signed build.
