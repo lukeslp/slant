@@ -6,6 +6,12 @@
       "recorded": "2026-11-14T14:39:44-0800",
       "specId": "1751a63a-af79-5c7f-a2f2-41140bf28f9e"
     },
+    "551f5126154e3ead569dc2289d2664137ce1aeac84b4bd8e79bf601a9784f19d": {
+      "assetId": "47000019-764e-8d63-801d-57457fbe472a",
+      "fileName": "02-solved.png",
+      "recorded": "2026-11-19T11:44:47-0800",
+      "specId": "bd402f1a-26ee-5b83-9dd7-972c60c43d47"
+    },
     "63b7f34616e86412014af285da90f7c2af39401c7274c41396727b08a3b75c86": {
       "assetId": "d0400019-764e-8d63-802a-236ce11ea22e",
       "fileName": "02-solved.png",
@@ -41,6 +47,12 @@
       "fileName": "01-in-progress.png",
       "recorded": "2026-11-14T14:39:37-0800",
       "specId": "bd402f1a-26ee-5b83-9dd7-972c60c43d47"
+    },
+    "ba77babe6301f9a283cd4da50ee10c6aea1abb3e36a53ab731591e07190910e9": {
+      "assetId": "16c00019-764e-8d63-8028-b646e7ab1e06",
+      "fileName": "02-solved-ipad.png",
+      "recorded": "2026-11-19T11:44:45-0800",
+      "specId": "1751a63a-af79-5c7f-a2f2-41140bf28f9e"
     },
     "fafa5072f4d0c93990d50c5be6092f7a24633494e158788c106a23bbe39c217a": {
       "assetId": "90000019-764e-8d63-8003-557b7be6ed9d",
