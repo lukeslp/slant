@@ -27,7 +27,7 @@ left off. Settings and How to play are the game's own sheets.
 | Thing | Value |
 |---|---|
 | Product / display name | **Slant** |
-| Repository | `lukeslp/slant` (private), this folder (`app/`) |
+| Repository | `lukeslp/slant`, this folder (`app/`) |
 | Game source | `../slant/`, synced from game-riffs `slant/` by `../tools/sync-from-game-riffs.sh` |
 | iOS bundle id / Android application id | `com.oneimpossiblethingatatime.slant` (confirmed 2026-11-14) |
 | Apple team | `596T7J7FB6`, automatic signing |
